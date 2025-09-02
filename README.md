@@ -212,4 +212,4 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 **Built with ❤️ by Soroush Taheri**
-*Last Updated: January 2025*
+*Last Updated: September 2025*

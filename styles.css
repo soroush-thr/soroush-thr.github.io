@@ -109,6 +109,18 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--secondary-color);
 }
 
+.nav-logo-img {
+    height: 50px;
+    width: 50px;
+    margin-right: 12px;
+    vertical-align: middle;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    display: inline-block;
+    border: 2px solid var(--primary-color);
+}
+
 .nav-menu {
     display: flex;
     gap: 1.5rem;
