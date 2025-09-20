@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://soroush-thr.github.io/sitemap.xml
+
+# Disallow temp directory
+Disallow: /temp/
