@@ -1,5 +1,7 @@
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize theme first to prevent flash
+    initThemeToggle();
     // Initialize all functionality
     initNavigation();
     initScrollAnimations();
@@ -403,22 +405,44 @@ if (heroStats) {
     counterObserver.observe(heroStats);
 }
 
-// Theme toggle functionality (for future dark mode)
+// Theme toggle functionality
 function initThemeToggle() {
     const themeToggle = document.getElementById('theme-toggle');
-    if (!themeToggle) return;
+    const themeIcon = document.getElementById('theme-icon');
+    if (!themeToggle || !themeIcon) return;
     
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-theme');
-        const isDark = document.body.classList.contains('dark-theme');
-        localStorage.setItem('dark-theme', isDark);
-    });
+    // Get saved theme or default to dark (default)
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    const html = document.documentElement;
     
-    // Load saved theme
-    const savedTheme = localStorage.getItem('dark-theme');
-    if (savedTheme === 'true') {
-        document.body.classList.add('dark-theme');
+    // Apply saved theme
+    if (savedTheme === 'light') {
+        html.setAttribute('data-theme', 'light');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    } else {
+        html.setAttribute('data-theme', 'dark');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
     }
+    
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        // Update icon
+        if (newTheme === 'light') {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        } else {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+    });
 }
 
 // Lazy loading for images
@@ -526,5 +550,4 @@ document.addEventListener('click', (e) => {
 });
 
 // Initialize all additional features
-initThemeToggle();
 initLazyLoading();
