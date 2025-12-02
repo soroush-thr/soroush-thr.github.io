@@ -42,10 +42,22 @@ function initNavigation() {
         });
     });
 
-    // Active link highlighting
+    // Active link highlighting for multi-page navigation
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    navLinks.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        // Remove active class from all links
+        link.classList.remove('active');
+        // Check if current page matches the link
+        if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+
+    // Also handle scroll-based highlighting for single-page sections (if any)
     window.addEventListener('scroll', () => {
         let current = '';
-        const sections = document.querySelectorAll('section');
+        const sections = document.querySelectorAll('section[id]');
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -55,12 +67,14 @@ function initNavigation() {
             }
         });
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
+        // Only update if we're on a page with hash navigation
+        if (current && window.location.hash) {
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
     });
 }
 
@@ -299,18 +313,18 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Smooth scrolling for anchor links
+// Smooth scrolling for anchor links (only on same page)
 function initSmoothScrolling() {
     const links = document.querySelectorAll('a[href^="#"]');
     
     links.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
             
+            // Only prevent default and scroll if target is on same page
             if (targetSection) {
+                e.preventDefault();
                 const offsetTop = targetSection.offsetTop - 70; // Account for fixed navbar
                 
                 window.scrollTo({
@@ -318,6 +332,7 @@ function initSmoothScrolling() {
                     behavior: 'smooth'
                 });
             }
+            // If target doesn't exist, let browser handle navigation normally
         });
     });
 }

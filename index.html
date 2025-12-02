@@ -37,20 +37,18 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#home">
+                <a href="index.html">
                     <img src="images/thumbnail.png" alt="Logo" class="nav-logo-img">
                     Soroush Taheri
                 </a>
             </div>
             <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#publications" class="nav-link">Publications</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#achievements" class="nav-link">Achievements</a>
-                <a href="#education" class="nav-link">Education</a>
-                <a href="#certifications" class="nav-link">Certifications</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="research.html" class="nav-link">Research</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="education.html" class="nav-link">Education</a>
+                <a href="contact.html" class="nav-link">Contact</a>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
                     <i class="fas fa-moon" id="theme-icon"></i>
                 </button>
@@ -92,13 +90,13 @@
                         </div>
                     </div>
                     <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">
+                        <a href="contact.html" class="btn btn-primary">
                             <i class="fas fa-envelope"></i>
                             Get In Touch
                         </a>
-                        <a href="#achievements" class="btn btn-secondary">
+                        <a href="experience.html" class="btn btn-secondary">
                             <i class="fas fa-chart-line"></i>
-                            View Achievements
+                            View Experience
                         </a>
                     </div>
                 </div>
@@ -124,539 +122,34 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- Quick Overview Section -->
+    <section class="overview">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="lead">
-                        I am a passionate Data Scientist and ML Engineer with a strong academic background and extensive industry experience. 
-                        Currently working as an ML & Data Science Specialist, focusing on sales analytics and business optimization.
-                    </p>
-                    <p>
-                        My expertise spans across machine learning, deep learning, and data science applications. I have developed advanced LSTM models 
-                        for predictive analytics, implemented BERT-based embeddings for NLP tasks, and engineered computer vision systems for various 
-                        applications. My work has resulted in significant improvements including 25% RMSE improvement in forecasting and 18% better 
-                        accuracy in topic relationship detection.
-                    </p>
-                    <p>
-                        With over 6 years of experience in both academic research and industry applications, I have worked on diverse projects ranging from 
-                        energy forecasting and renewable integration to computer vision systems for urban analytics. My research has been published 
-                        in high-impact journals including Scientometrics and presented at international conferences.
-                    </p>
+            <h2 class="section-title">Quick Overview</h2>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>About Me</h3>
+                    <p>Passionate Data Scientist and ML Engineer with strong academic background and extensive industry experience.</p>
+                    <a href="about.html" class="btn btn-outline">Learn More</a>
                 </div>
-                <div class="about-highlights">
-                    <div class="highlight-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <div>
-                            <h4>M.S. Computer Science: Software Engineering</h4>
-                            <p>Shahid Beheshti University<br>GPA: 3.9</p>
-                        </div>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-briefcase"></i>
-                        <div>
-                            <h4>ML & Data Science Specialist</h4>
-                            <p>Ostrich Industry Journal<br>Current Position</p>
-                        </div>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fas fa-chart-line"></i>
-                        <div>
-                            <h4>Industry Experience</h4>
-                            <p>Machine Learning & Data Science<br>Multiple Companies</p>
-                        </div>
-                    </div>
+                <div class="overview-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Research & Publications</h3>
+                    <p>Published researcher with work in high-impact journals including Scientometrics and international conferences.</p>
+                    <a href="research.html" class="btn btn-outline">View Publications</a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Publications Section -->
-    <section id="publications" class="publications">
-        <div class="container">
-            <h2 class="section-title">Publications</h2>
-            <div class="publications-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="journal">Journal Articles</button>
-                <button class="filter-btn" data-filter="conference">Conference Papers</button>
-            </div>
-            
-            <div class="publications-grid">
-                <div class="publication-item" data-category="conference">
-                    <div class="publication-header">
-                        <h3>A Comprehensive Review of Machine Learning Approaches for Decarbonisation and Energy Efficiency in the UK Building Sector</h3>
-                        <span class="publication-year">2025</span>
-                    </div>
-                    <div class="publication-authors">
-                        <strong>Taheri, S.</strong>, Ahmadi, E. and Izadpanah, A.
-                    </div>
-                    <div class="publication-venue">
-                        CIBSE IBPSA-England Technical Symposium 2025
-                    </div>
-                    <div class="publication-links">
-                        <a href="https://www.researchgate.net/publication/394963499_A_Comprehensive_Review_of_Machine_Learning_Approaches_for_Decarbonisation_Energy_Efficiency_and_Management_in_the_UK_Building_Sector" target="_blank" class="publication-link">
-                            <i class="fas fa-external-link-alt"></i> DOI
-                        </a>
-                    </div>
+                <div class="overview-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Professional Experience</h3>
+                    <p>7+ years of experience in ML, data science, and research with measurable business impact.</p>
+                    <a href="experience.html" class="btn btn-outline">View Experience</a>
                 </div>
-
-                <div class="publication-item" data-category="journal">
-                    <div class="publication-header">
-                        <h3>An embedding approach for analyzing the evolution of research topics with a case study on computer science subdomains</h3>
-                        <span class="publication-year">2023</span>
-                    </div>
-                    <div class="publication-authors">
-                        Harikandeh, S.R.T., Aliakbary, S. and <strong>Taheri, S.</strong>
-                    </div>
-                    <div class="publication-venue">
-                        Scientometrics, 128(3), pp.1567-1582
-                    </div>
-                    <div class="publication-links">
-                        <a href="https://doi.org/10.1007/s11192-023-04642-4" target="_blank" class="publication-link">
-                            <i class="fas fa-external-link-alt"></i> DOI
-                        </a>
-                    </div>
-                </div>
-
-                <div class="publication-item" data-category="journal">
-                    <div class="publication-header">
-                        <h3>Research trend prediction in computer science publications: a deep neural network approach</h3>
-                        <span class="publication-year">2022</span>
-                    </div>
-                    <div class="publication-authors">
-                        <strong>Taheri, S.</strong> and Aliakbary, S.
-                    </div>
-                    <div class="publication-venue">
-                        Scientometrics, 127(2), pp.849-869
-                    </div>
-                    <div class="publication-links">
-                        <a href="https://doi.org/10.1007/s11192-021-04240-2" target="_blank" class="publication-link">
-                            <i class="fas fa-external-link-alt"></i> DOI
-                        </a>
-                    </div>
-                </div>
-
-                <div class="publication-item" data-category="conference">
-                    <div class="publication-header">
-                        <h3>Towards Study of Research Topics Evolution in Artificial Intelligence based on Topic Embedding</h3>
-                        <span class="publication-year">2021</span>
-                    </div>
-                    <div class="publication-authors">
-                        Harikandeh, S.R.T., Aliakbary, S. and <strong>Taheri, S.</strong>
-                    </div>
-                    <div class="publication-venue">
-                        11th International Conference on Computer Engineering and Knowledge IEEE, pp. 406-411
-                    </div>
-                    <div class="publication-links">
-                        <a href="https://doi.org/10.1109/ICCKE54056.2021.9721503" target="_blank" class="publication-link">
-                            <i class="fas fa-external-link-alt"></i> DOI
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Professional Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Professional & Research Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="experience-header">
-                            <h3>ML & Software Specialist – Sales Analytics</h3>
-                            <span class="experience-period">Sep 2024 -- Present</span>
-                        </div>
-                        <h4>Ostrich Industry Journal (Full-Time)</h4>
-                        <p class="experience-location">Tehran, Iran</p>
-                        <ul class="experience-achievements">
-                            <li><strong>ML & Business Optimization:</strong> Built end-to-end ML pipelines, trained predictive models, and developed real-time dashboards for sales analytics and executive reporting.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="experience-header">
-                            <h3>Data Scientist and ML Engineer</h3>
-                            <span class="experience-period">July 2022 -- June 2025</span>
-                        </div>
-                        <h4>Energiser LTD (Part-Time)</h4>
-                        <p class="experience-location">Remote, London, UK</p>
-                        <ul class="experience-achievements">
-                            <li><strong>Energy Forecasting:</strong> Engineered Neural Networks for energy demand forecasting, achieving <strong>7% cost reduction</strong>.</li>
-                            <li><strong>Renewable Integration:</strong> Implemented ensemble learning methods for power flow predictions, achieving <strong>15% accuracy improvement</strong>.</li>
-                            <li><strong>Cloud Infrastructure:</strong> Architected scalable ML pipelines on AWS with MLOps practices, achieving <strong>99.8% uptime</strong>.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="experience-header">
-                            <h3>Data Science Specialist</h3>
-                            <span class="experience-period">Oct 2020 -- Dec 2024</span>
-                        </div>
-                        <h4>Freelance Professional (Part-Time)</h4>
-                        <p class="experience-location">Tehran, Iran</p>
-                        <ul class="experience-achievements">
-                            <li><strong>Computer Vision:</strong> Developed deep learning-based security systems and 3D image analysis pipelines using CNNs and transfer learning.</li>
-                            <li><strong>NLP:</strong> Created advanced NLP pipelines using BERT, GPT, and T5 models for sentiment analysis and automated report generation.</li>
-                            <li><strong>Urban Analytics:</strong> Engineered CNN-powered computer vision systems for cityscape analysis and urban planning applications.</li>
-                            <li><strong>Industrial AI:</strong> Designed ML systems for process optimization and predictive maintenance in industrial settings.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="experience-header">
-                            <h3>Data Scientist and Research Assistant</h3>
-                            <span class="experience-period">Dec 2018 -- April 2023</span>
-                        </div>
-                        <h4>Data-Oriented Research for Software Analytics (DORSA) Laboratory</h4>
-                        <p class="experience-location">Tehran, Iran</p>
-                        <ul class="experience-achievements">
-                            <li><strong>Advanced LSTM Models:</strong> Engineered LSTM models for predictive analytics in scientific literature, achieving <strong>25% RMSE improvement</strong>.</li>
-                            <li><strong>NLP & BERT-based Embeddings:</strong> Implemented BERT-based embeddings and topic modeling, improving topic detection accuracy by <strong>18%</strong>.</li>
-                            <li><strong>Cross-domain Knowledge Discovery:</strong> Developed ML methodologies for bibliometrics, achieving <strong>22% better prediction stability</strong>.</li>
-                            <li><strong>Research & Publications:</strong> Conducted empirical studies on scientometrics, contributing to <strong>peer-reviewed publications</strong> in high-impact journals.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Key Achievements & Impact Section -->
-    <section id="achievements" class="achievements">
-        <div class="container">
-            <h2 class="section-title">Key Achievements & Impact</h2>
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3>25% RMSE Improvement</h3>
-                        <p>Advanced LSTM models for predictive analytics in scientific literature</p>
-                        <div class="achievement-tags">
-                            <span class="tag">Deep Learning</span>
-                            <span class="tag">Time Series</span>
-                            <span class="tag">Research</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3>7% Cost Reduction</h3>
-                        <p>Energy demand forecasting system that reduced operational costs for Energiser LTD</p>
-                        <div class="achievement-tags">
-                            <span class="tag">Energy Sector</span>
-                            <span class="tag">Cost Optimization</span>
-                            <span class="tag">Neural Networks</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3>99.8% System Uptime</h3>
-                        <p>Production-grade ML pipelines on AWS with MLOps practices</p>
-                        <div class="achievement-tags">
-                            <span class="tag">MLOps</span>
-                            <span class="tag">AWS</span>
-                            <span class="tag">Production</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3>18% Accuracy Boost</h3>
-                        <p>NLP techniques and BERT-based embeddings for topic relationship detection</p>
-                        <div class="achievement-tags">
-                            <span class="tag">NLP</span>
-                            <span class="tag">BERT</span>
-                            <span class="tag">Topic Modeling</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3>4 Peer-Reviewed Publications</h3>
-                        <p>Published research in high-impact journals including Scientometrics</p>
-                        <div class="achievement-tags">
-                            <span class="tag">Research</span>
-                            <span class="tag">Publications</span>
-                            <span class="tag">Innovation</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3>International Collaborations</h3>
-                        <p>Worked with researchers from Imperial College London, UTS, and Amazon</p>
-                        <div class="achievement-tags">
-                            <span class="tag">Collaboration</span>
-                            <span class="tag">Global</span>
-                            <span class="tag">Leadership</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-timeline">
-                <div class="education-item">
-                    <div class="education-header">
-                        <h3>M.S. in Computer Science</h3>
-                        <span class="education-gpa">GPA: 3.9</span>
-                    </div>
-                    <h4>Shahid Beheshti University</h4>
-                    <p class="education-location">Tehran, Iran</p>
-                    <p class="education-period">Sep 2018 -- Jan 2021</p>
-                    <div class="education-courses">
-                        <h5>Relevant Coursework:</h5>
-                        <p>Data Mining, Complex Networks, Cloud Computing, Advanced Database Systems, Distributed Systems, Advanced Software Engineering, Performance Evaluation</p>
-                    </div>
-                </div>
-
-                <div class="education-item">
-                    <div class="education-header">
-                        <h3>B.S. in Computer Science</h3>
-                        <span class="education-gpa">GPA: 3.6</span>
-                    </div>
-                    <h4>Islamic Azad University Central Tehran Branch</h4>
-                    <p class="education-location">Tehran, Iran</p>
-                    <p class="education-period">Sep 2013 -- Dec 2017</p>
-                    <div class="education-courses">
-                        <h5>Relevant Coursework:</h5>
-                        <p>Artificial Intelligence, Database Systems, Information Retrieval, Software Engineering, Operating Systems</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications">
-        <div class="container">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certifications-grid">
-                <div class="certification-item">
-                    <div class="certification-header">
-                        <div class="certification-icon">
-                            <i class="fab fa-google"></i>
-                        </div>
-                        <div class="certification-info">
-                            <h3>Google Data Analytics Specialization</h3>
-                            <p class="certification-issuer">Google</p>
-                        </div>
-                    </div>
-                    <div class="certification-details">
-                        <span class="certification-date">Issued: Feb 2025</span>
-                        <span class="certification-id">Credential ID: US2GAV8Y6EU1</span>
-                    </div>
-                    <div class="certification-verify">
-                        <a href="https://www.coursera.org/account/accomplishments/specialization/US2GAV8Y6EU1" target="_blank" class="verify-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Show Credential
-                        </a>
-                    </div>
-                </div>
-
-                <div class="certification-item">
-                    <div class="certification-header">
-                        <div class="certification-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div class="certification-info">
-                            <h3>Neural Networks and Deep Learning</h3>
-                            <p class="certification-issuer">Coursera</p>
-                        </div>
-                    </div>
-                    <div class="certification-details">
-                        <span class="certification-date">Issued: Apr 2021</span>
-                        <span class="certification-id">Credential ID: Q6VCPZVTBBQ2</span>
-                    </div>
-                    <div class="certification-verify">
-                        <a href="https://coursera.org/verify/Q6VCPZVTBBQ2" target="_blank" class="verify-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Show Credential
-                        </a>
-                    </div>
-                </div>
-
-                <div class="certification-item">
-                    <div class="certification-header">
-                        <div class="certification-icon">
-                            <i class="fas fa-calculator"></i>
-                        </div>
-                        <div class="certification-info">
-                            <h3>Data Science Math Skills</h3>
-                            <p class="certification-issuer">Duke University</p>
-                        </div>
-                    </div>
-                    <div class="certification-details">
-                        <span class="certification-date">Issued: Aug 2025</span>
-                        <span class="certification-id">Credential ID: IRXIDBW2H7RT</span>
-                    </div>
-                    <div class="certification-verify">
-                        <a href="https://www.coursera.org/account/accomplishments/verify/IRXIDBW2H7RT" target="_blank" class="verify-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Show Credential
-                        </a>
-                    </div>
-                </div>
-
-                <div class="certification-item">
-                    <div class="certification-header">
-                        <div class="certification-icon">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                        <div class="certification-info">
-                            <h3>Mastering Key Performance Indicators (KPIs)</h3>
-                            <p class="certification-issuer">365 Data Science</p>
-                        </div>
-                    </div>
-                    <div class="certification-details">
-                        <span class="certification-date">Issued: Jul 2024</span>
-                        <span class="certification-id">Credential ID: CC-113AE73DD9</span>
-                    </div>
-                    <div class="certification-verify">
-                        <a href="https://learn.365datascience.com/certificates/CC-113AE73DD9/" target="_blank" class="verify-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Show Credential
-                        </a>
-                    </div>
-                </div>
-
-                <div class="certification-item">
-                    <div class="certification-header">
-                        <div class="certification-icon">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <div class="certification-info">
-                            <h3>Unsupervised Learning in Python</h3>
-                            <p class="certification-issuer">DataCamp</p>
-                        </div>
-                    </div>
-                    <div class="certification-details">
-                        <span class="certification-date">Issued: May 2021</span>
-                        <span class="certification-id">Credential ID: 18973951</span>
-                    </div>
-                    <div class="certification-verify">
-                        <a href="https://www.linkedin.com/in/soroush-thr/details/certifications/" target="_blank" class="verify-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Show Credential
-                        </a>
-                    </div>
-                </div>
-
-                <div class="certification-item">
-                    <div class="certification-header">
-                        <div class="certification-icon">
-                            <i class="fas fa-language"></i>
-                        </div>
-                        <div class="certification-info">
-                            <h3>TOEFL iBT - Score: 110</h3>
-                            <p class="certification-issuer">ETS</p>
-                        </div>
-                    </div>
-                    <div class="certification-details">
-                        <span class="certification-date">Issued: Apr 2024</span>
-                        <span class="certification-id">Credential ID: 4976304249799154</span>
-                    </div>
-                    <div class="certification-verify">
-                        <a href="https://www.linkedin.com/in/soroush-thr/details/certifications/" target="_blank" class="verify-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Show Credential
-                        </a>
-                    </div>
-                </div>
-
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-header">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always interested in discussing new opportunities, research collaborations, and innovative projects in data science and machine learning.</p>
-                </div>
-                
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <a href="mailto:soroush.thr@gmail.com">soroush.thr@gmail.com</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <div>
-                            <h4>LinkedIn</h4>
-                            <a href="https://www.linkedin.com/in/soroush-thr" target="_blank">linkedin.com/in/soroush-thr</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <div>
-                            <h4>GitHub</h4>
-                            <a href="https://github.com/soroush-thr" target="_blank">github.com/soroush-thr</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <div>
-                            <h4>Google Scholar</h4>
-                            <a href="https://scholar.google.com/citations?hl=en&user=hhoL598AAAAJ" target="_blank">View Profile</a>
-                        </div>
-                    </div>
+                <div class="overview-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Education & Certifications</h3>
+                    <p>M.S. in Computer Science with GPA 3.9 and multiple professional certifications.</p>
+                    <a href="education.html" class="btn btn-outline">View Details</a>
                 </div>
             </div>
         </div>

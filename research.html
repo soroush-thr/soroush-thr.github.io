@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research & Publications - Soroush Taheri</title>
+    <meta name="description" content="Research publications by Soroush Taheri in machine learning, data science, and scientometrics.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/thumbnail.png">
+    <link rel="apple-touch-icon" href="images/thumbnail.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Theme initialization script (prevents flash) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="images/thumbnail.png" alt="Logo" class="nav-logo-img">
+                    Soroush Taheri
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="research.html" class="nav-link active">Research</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="education.html" class="nav-link">Education</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Publications Section -->
+    <section id="publications" class="publications">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <div class="publications-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="journal">Journal Articles</button>
+                <button class="filter-btn" data-filter="conference">Conference Papers</button>
+            </div>
+            
+            <div class="publications-grid">
+                <div class="publication-item" data-category="conference">
+                    <div class="publication-header">
+                        <h3>A Comprehensive Review of Machine Learning Approaches for Decarbonisation and Energy Efficiency in the UK Building Sector</h3>
+                        <span class="publication-year">2025</span>
+                    </div>
+                    <div class="publication-authors">
+                        <strong>Taheri, S.</strong>, Ahmadi, E. and Izadpanah, A.
+                    </div>
+                    <div class="publication-venue">
+                        CIBSE IBPSA-England Technical Symposium 2025
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://www.researchgate.net/publication/394963499_A_Comprehensive_Review_of_Machine_Learning_Approaches_for_Decarbonisation_Energy_Efficiency_and_Management_in_the_UK_Building_Sector" target="_blank" class="publication-link">
+                            <i class="fas fa-external-link-alt"></i> DOI
+                        </a>
+                    </div>
+                </div>
+
+                <div class="publication-item" data-category="journal">
+                    <div class="publication-header">
+                        <h3>An embedding approach for analyzing the evolution of research topics with a case study on computer science subdomains</h3>
+                        <span class="publication-year">2023</span>
+                    </div>
+                    <div class="publication-authors">
+                        Harikandeh, S.R.T., Aliakbary, S. and <strong>Taheri, S.</strong>
+                    </div>
+                    <div class="publication-venue">
+                        Scientometrics, 128(3), pp.1567-1582
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1007/s11192-023-04642-4" target="_blank" class="publication-link">
+                            <i class="fas fa-external-link-alt"></i> DOI
+                        </a>
+                    </div>
+                </div>
+
+                <div class="publication-item" data-category="journal">
+                    <div class="publication-header">
+                        <h3>Research trend prediction in computer science publications: a deep neural network approach</h3>
+                        <span class="publication-year">2022</span>
+                    </div>
+                    <div class="publication-authors">
+                        <strong>Taheri, S.</strong> and Aliakbary, S.
+                    </div>
+                    <div class="publication-venue">
+                        Scientometrics, 127(2), pp.849-869
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1007/s11192-021-04240-2" target="_blank" class="publication-link">
+                            <i class="fas fa-external-link-alt"></i> DOI
+                        </a>
+                    </div>
+                </div>
+
+                <div class="publication-item" data-category="conference">
+                    <div class="publication-header">
+                        <h3>Towards Study of Research Topics Evolution in Artificial Intelligence based on Topic Embedding</h3>
+                        <span class="publication-year">2021</span>
+                    </div>
+                    <div class="publication-authors">
+                        Harikandeh, S.R.T., Aliakbary, S. and <strong>Taheri, S.</strong>
+                    </div>
+                    <div class="publication-venue">
+                        11th International Conference on Computer Engineering and Knowledge IEEE, pp. 406-411
+                    </div>
+                    <div class="publication-links">
+                        <a href="https://doi.org/10.1109/ICCKE54056.2021.9721503" target="_blank" class="publication-link">
+                            <i class="fas fa-external-link-alt"></i> DOI
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Soroush Taheri. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:soroush.thr@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/soroush-thr" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/soroush-thr" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?hl=en&user=hhoL598AAAAJ" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://orcid.org/my-orcid?orcid=0000-0002-5885-3036" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+                    <a href="https://www.webofscience.com/wos/author/record/GVU-0703-2022" target="_blank" title="Web of Science"><i class="fas fa-database"></i></a>
+                    <a href="https://www.researchgate.net/profile/Soroush_Taheri" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
+
