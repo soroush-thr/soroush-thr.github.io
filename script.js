@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScrolling();
     initTypingEffect();
     initParallaxEffect();
+    initExperienceClickable();
 });
 
 // Navigation functionality
@@ -566,3 +567,48 @@ document.addEventListener('click', (e) => {
 
 // Initialize all additional features
 initLazyLoading();
+
+// Experience section clickable functionality - SIMPLE VERSION
+function initExperienceClickable() {
+    function setupClickable() {
+        const items = document.querySelectorAll('.timeline-content.clickable');
+        
+        items.forEach(function(item) {
+            // Remove any existing handlers
+            item.onclick = null;
+            
+            // Add simple click handler
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                var isExpanded = this.classList.contains('expanded');
+                
+                // Toggle the expanded class
+                if (isExpanded) {
+                    this.classList.remove('expanded');
+                } else {
+                    this.classList.add('expanded');
+                }
+                
+                // Update text
+                var span = this.querySelector('.click-indicator span');
+                if (span) {
+                    span.textContent = this.classList.contains('expanded') 
+                        ? 'Click to hide details' 
+                        : 'Click to view details';
+                }
+            });
+        });
+    }
+    
+    // Try immediately
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupClickable);
+    } else {
+        setupClickable();
+    }
+    
+    // Also try after a short delay as fallback
+    setTimeout(setupClickable, 500);
+}

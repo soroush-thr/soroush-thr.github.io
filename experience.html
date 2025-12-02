@@ -57,32 +57,42 @@
     <!-- Professional Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
-            <h2 class="section-title">Professional & Research Experience</h2>
+            <h2 class="section-title">Professional Experience</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content clickable">
                         <div class="experience-header">
                             <h3>ML & Software Specialist – Sales Analytics</h3>
                             <span class="experience-period">Sep 2024 -- Present</span>
                         </div>
                         <h4>Ostrich Industry Journal (Full-Time)</h4>
                         <p class="experience-location">Tehran, Iran</p>
+                        <div class="click-indicator">
+                            <i class="fas fa-chevron-down"></i>
+                            <span>Click to view details</span>
+                        </div>
                         <ul class="experience-achievements">
                             <li><strong>ML & Business Optimization:</strong> Built end-to-end ML pipelines, trained predictive models, and developed real-time dashboards for sales analytics and executive reporting.</li>
+                            <li><strong>Dashboard Development:</strong> Created interactive BI dashboards using modern visualization tools, enabling stakeholders to monitor KPIs and make data-driven decisions in real-time.</li>
+                            <li><strong>Software Development:</strong> Built robust software solutions for data integration, API development, and automated reporting systems to streamline business operations.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content clickable">
                         <div class="experience-header">
                             <h3>Data Scientist and ML Engineer</h3>
                             <span class="experience-period">July 2022 -- June 2025</span>
                         </div>
                         <h4>Energiser LTD (Part-Time)</h4>
                         <p class="experience-location">Remote, London, UK</p>
+                        <div class="click-indicator">
+                            <i class="fas fa-chevron-down"></i>
+                            <span>Click to view details</span>
+                        </div>
                         <ul class="experience-achievements">
                             <li><strong>Energy Forecasting:</strong> Engineered Neural Networks for energy demand forecasting, achieving <strong>7% cost reduction</strong>.</li>
                             <li><strong>Renewable Integration:</strong> Implemented ensemble learning methods for power flow predictions, achieving <strong>15% accuracy improvement</strong>.</li>
@@ -93,13 +103,17 @@
 
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content clickable">
                         <div class="experience-header">
                             <h3>Data Science Specialist</h3>
                             <span class="experience-period">Oct 2020 -- Dec 2024</span>
                         </div>
                         <h4>Freelance Professional (Part-Time)</h4>
                         <p class="experience-location">Tehran, Iran</p>
+                        <div class="click-indicator">
+                            <i class="fas fa-chevron-down"></i>
+                            <span>Click to view details</span>
+                        </div>
                         <ul class="experience-achievements">
                             <li><strong>Computer Vision:</strong> Developed deep learning-based security systems and 3D image analysis pipelines using CNNs and transfer learning.</li>
                             <li><strong>NLP:</strong> Created advanced NLP pipelines using BERT, GPT, and T5 models for sentiment analysis and automated report generation.</li>
@@ -111,13 +125,17 @@
 
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-content clickable">
                         <div class="experience-header">
                             <h3>Data Scientist and Research Assistant</h3>
                             <span class="experience-period">Dec 2018 -- April 2023</span>
                         </div>
                         <h4>Data-Oriented Research for Software Analytics (DORSA) Laboratory</h4>
                         <p class="experience-location">Tehran, Iran</p>
+                        <div class="click-indicator">
+                            <i class="fas fa-chevron-down"></i>
+                            <span>Click to view details</span>
+                        </div>
                         <ul class="experience-achievements">
                             <li><strong>Advanced LSTM Models:</strong> Engineered LSTM models for predictive analytics in scientific literature, achieving <strong>25% RMSE improvement</strong>.</li>
                             <li><strong>NLP & BERT-based Embeddings:</strong> Implemented BERT-based embeddings and topic modeling, improving topic detection accuracy by <strong>18%</strong>.</li>
@@ -248,6 +266,31 @@
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+    <script>
+        // Simple backup script for experience expansion
+        (function() {
+            function setupExpansion() {
+                var items = document.querySelectorAll('.timeline-content.clickable');
+                for (var i = 0; i < items.length; i++) {
+                    items[i].onclick = function() {
+                        this.classList.toggle('expanded');
+                        var span = this.querySelector('.click-indicator span');
+                        if (span) {
+                            span.textContent = this.classList.contains('expanded') 
+                                ? 'Click to hide details' 
+                                : 'Click to view details';
+                        }
+                    };
+                }
+            }
+            
+            if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                setupExpansion();
+            } else {
+                document.addEventListener('DOMContentLoaded', setupExpansion);
+            }
+        })();
+    </script>
 </body>
 </html>
 
