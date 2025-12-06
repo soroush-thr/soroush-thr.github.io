@@ -96,9 +96,11 @@ function initScrollAnimations() {
     }, observerOptions);
 
     // Add scroll animation to elements
-    const animateElements = document.querySelectorAll('.research-item, .publication-item, .timeline-item, .project-card, .skill-category, .education-item, .highlight-item');
+    const animateElements = document.querySelectorAll('.research-item, .publication-item, .timeline-item, .project-card, .project-item.scroll-animate, .skill-category, .education-item, .highlight-item');
     animateElements.forEach(el => {
-        el.classList.add('scroll-animate');
+        if (!el.classList.contains('scroll-animate')) {
+            el.classList.add('scroll-animate');
+        }
         observer.observe(el);
     });
 }

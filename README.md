@@ -8,11 +8,14 @@ Visit the live portfolio: [https://soroush-thr.github.io](https://soroush-thr.gi
 
 ## 📋 Features
 
+- **Multi-Page Architecture**: Dedicated pages for Home, About, Experience, Projects, Education, Research, and Contact
+- **Dark/Light Theme Toggle**: User preference-based theme switching with persistent storage
 - **Professional Design**: Modern, clean interface with sophisticated color scheme and typography
 - **Responsive Layout**: Fully optimized for desktop, tablet, and mobile devices
 - **Interactive Elements**: Smooth scroll animations, publication filtering, and dynamic navigation
 - **Comprehensive Showcase**: Research publications, professional experience, and technical achievements
 - **Performance Optimized**: Fast loading with optimized animations and efficient code
+- **SEO Optimized**: Meta tags, sitemap, and robots.txt for better search engine visibility
 - **Accessibility**: Keyboard navigation, semantic HTML, and screen reader friendly
 - **Contact Integration**: Direct links to professional profiles and contact information
 
@@ -29,24 +32,33 @@ Visit the live portfolio: [https://soroush-thr.github.io](https://soroush-thr.gi
 
 ```
 portfolio/
-├── index.html          # Main HTML file with complete portfolio structure
-├── styles.css          # Comprehensive CSS with modern design system
-├── script.js           # JavaScript functionality and interactions
+├── index.html          # Home page - Main landing page
+├── about.html          # About page - Personal summary and professional highlights
+├── experience.html     # Experience page - Professional experience and achievements
+├── projects.html       # Projects page - Portfolio of technical projects
+├── education.html      # Education page - Academic background and certifications
+├── research.html       # Research page - Publications and research work
+├── contact.html        # Contact page - Contact information and social links
+├── styles.css          # Comprehensive CSS with modern design system and dark/light theme
+├── script.js           # JavaScript functionality, theme toggle, and interactions
+├── robots.txt          # SEO robots file
+├── sitemap.xml         # XML sitemap for search engines
 ├── README.md           # Project documentation
 └── images/             # Portfolio images and assets
-    └── personal.jpg    # Professional profile photo
+    ├── personal.jpg    # Professional profile photo
+    ├── thumbnail.png   # Site favicon and logo
+    └── projects/       # Project thumbnails and images
 ```
 
-## 🎯 Portfolio Sections
+## 🎯 Portfolio Pages
 
-1. **Hero Section**: Professional introduction with key statistics and expertise tags
-2. **About Me**: Personal summary and professional highlights
-3. **Publications**: Research papers with filtering (Journal Articles, Conference Papers)
-4. **Professional Experience**: Timeline of industry and research positions
-5. **Key Achievements**: Quantified impact and technical accomplishments
-6. **Education**: Academic background with relevant coursework
-7. **Certifications**: Professional certifications and credentials
-8. **Contact**: Professional contact information and social links
+1. **Home (index.html)**: Landing page with hero section, key statistics, and overview
+2. **About (about.html)**: Personal summary, professional highlights, and expertise
+3. **Experience (experience.html)**: Professional experience timeline and key achievements
+4. **Projects (projects.html)**: Portfolio of technical projects with descriptions and links
+5. **Education (education.html)**: Academic background, relevant coursework, and certifications
+6. **Research (research.html)**: Research publications with filtering (Journal Articles, Conference Papers)
+7. **Contact (contact.html)**: Professional contact information and social media links
 
 ## 🚀 Getting Started
 
@@ -119,16 +131,20 @@ The portfolio is fully responsive and optimized for:
 ### Components
 - **Cards**: Rounded corners with subtle shadows and hover effects
 - **Buttons**: Gradient backgrounds with smooth transitions
-- **Navigation**: Fixed header with backdrop blur and smooth scrolling
+- **Navigation**: Fixed header with backdrop blur, smooth scrolling, and active page highlighting
+- **Theme Toggle**: Dark/light mode switcher with persistent user preference
 - **Timeline**: Visual timeline with animated markers and content cards
+- **Project Grid**: Responsive grid layout for project showcase
 
 ## 🎨 Customization
 
 ### Personal Information
-- Update content in `index.html` sections
-- Modify professional experience and achievements
-- Add or remove publications and certifications
-- Update contact information and social links
+- Update content across all HTML pages (`index.html`, `about.html`, `experience.html`, etc.)
+- Modify professional experience in `experience.html`
+- Add or remove projects in `projects.html`
+- Update publications in `research.html`
+- Modify education and certifications in `education.html`
+- Update contact information in `contact.html`
 
 ### Visual Styling
 - Modify CSS custom properties in `styles.css`
@@ -137,10 +153,11 @@ The portfolio is fully responsive and optimized for:
 - Update spacing and layout parameters
 
 ### Functionality
-- Enhance JavaScript interactions in `script.js`
-- Add new features like dark mode or additional filters
+- Theme toggle functionality in `script.js` (dark/light mode)
+- Enhance JavaScript interactions and animations
+- Add additional filters or interactive features
 - Implement contact form with EmailJS integration
-- Add analytics tracking
+- Add analytics tracking (Google Analytics, etc.)
 
 ## 📊 Performance Features
 
@@ -203,10 +220,13 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🔄 Recent Updates
 
-- ✅ **Professional Design System**: Implemented comprehensive CSS variables and modern styling
+- ✅ **Multi-Page Architecture**: Converted to dedicated pages for better organization and SEO
+- ✅ **Dark/Light Theme**: Implemented theme toggle with persistent user preference storage
+- ✅ **Professional Design System**: Comprehensive CSS variables and modern styling
 - ✅ **Enhanced Responsiveness**: Optimized for all device sizes with mobile-first approach
-- ✅ **Interactive Features**: Added smooth animations, scroll effects, and dynamic navigation
-- ✅ **Content Organization**: Structured sections for publications, experience, and achievements
+- ✅ **Interactive Features**: Smooth animations, scroll effects, and dynamic navigation
+- ✅ **SEO Optimization**: Added meta tags, sitemap, and robots.txt for better search visibility
+- ✅ **Content Organization**: Structured pages for publications, experience, projects, and achievements
 - ✅ **Performance Optimization**: Fast loading with efficient code and optimized assets
 
 ---

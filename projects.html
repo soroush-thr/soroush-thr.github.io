@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Soroush Taheri</title>
+    <meta name="description" content="Portfolio of projects by Soroush Taheri in machine learning, data science, and software development.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/thumbnail.png">
+    <link rel="apple-touch-icon" href="images/thumbnail.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Theme initialization script (prevents flash) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="images/thumbnail.png" alt="Logo" class="nav-logo-img">
+                    Soroush Taheri
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="projects.html" class="nav-link active">Projects</a>
+                <a href="education.html" class="nav-link">Education</a>
+                <a href="research.html" class="nav-link">Research</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Open-Source Projects</h2>
+            <div class="projects-grid">
+                <div class="project-item clickable scroll-animate">
+                    <div class="project-header">
+                        <div class="project-title-row">
+                            <div class="project-logo">
+                                <img src="images/projects/factflow-logo.png" alt="FactFlow Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="project-logo-placeholder" style="display: none;">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                            </div>
+                            <div class="project-title-info">
+                                <h3>FactFlow: Financial Sentiment-Reality Check Agent</h3>
+                            </div>
+                        </div>
+                        <span class="project-period">Nov 2025</span>
+                    </div>
+                    <div class="project-thumbnail">
+                        <img src="images/projects/factflow-thumbnail.png" alt="FactFlow Thumbnail" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-thumbnail-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Thumbnail Placeholder</span>
+                        </div>
+                    </div>
+                    <p class="project-summary">AI-powered multi-agent system for financial market analysis that compares news sentiment with real market data to help traders make data-driven decisions.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/soroush-thr/FactFlow" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                    <div class="click-indicator">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Click to view details</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-section">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Detects bullish/bearish divergences between sentiment and price action</li>
+                                <li>Real-time analysis via News Scout, Market Analyst, and Judge agents</li>
+                                <li>Production-ready with Docker, logging, and evaluation tools</li>
+                                <li>Powered by Google ADK and Gemini 2.5 Flash Lite</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Problem Solved</h4>
+                            <p>Traders often react emotionally to market news, leading to losses from fear, FOMO, or misinformation. FactFlow eliminates emotional trading by providing transparent, data-driven insights that compare sentiment with actual market performance.</p>
+                        </div>
+                        <div class="project-skills">
+                            <h4>Technologies</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Machine Learning</span>
+                                <span class="skill-tag">API Development</span>
+                                <span class="skill-tag">Google ADK</span>
+                                <span class="skill-tag">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item clickable scroll-animate">
+                    <div class="project-header">
+                        <div class="project-title-row">
+                            <div class="project-logo">
+                                <img src="images/projects/auto-dj-logo.png" alt="Auto-DJ Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="project-logo-placeholder" style="display: none;">
+                                    <i class="fas fa-music"></i>
+                                </div>
+                            </div>
+                            <div class="project-title-info">
+                                <h3>Auto-DJ: AI-Powered Music Playlist Generator</h3>
+                            </div>
+                        </div>
+                        <span class="project-period">Oct 2025</span>
+                    </div>
+                    <div class="project-thumbnail">
+                        <img src="images/projects/auto-dj-thumbnail.png" alt="Auto-DJ Thumbnail" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-thumbnail-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Thumbnail Placeholder</span>
+                        </div>
+                    </div>
+                    <p class="project-summary">Intelligent music playlist generator that analyzes personal music libraries and creates playlists based on acoustic similarity using advanced audio signal processing.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/soroush-thr/Auto-DJ" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                    <div class="click-indicator">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Click to view details</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-section">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Multi-format audio support (MP3, WAV, FLAC, M4A)</li>
+                                <li>Acoustic fingerprinting using 13 MFCC coefficients</li>
+                                <li>Euclidean distance-based similarity analysis</li>
+                                <li>M3U playlist generation compatible with all major players</li>
+                                <li>Cross-platform compatibility and comprehensive testing</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Problem Solved</h4>
+                            <p>Users struggle to discover and organize music collections effectively. Auto-DJ intelligently analyzes acoustic properties to generate playlists that maintain musical coherence and flow, providing a personalized music discovery experience.</p>
+                        </div>
+                        <div class="project-skills">
+                            <h4>Technologies</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Audio Signal Processing</span>
+                                <span class="skill-tag">Machine Learning</span>
+                                <span class="skill-tag">librosa</span>
+                                <span class="skill-tag">scikit-learn</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item clickable scroll-animate">
+                    <div class="project-header">
+                        <div class="project-title-row">
+                            <div class="project-logo">
+                                <img src="images/projects/csv2dashboard-logo.png" alt="CSV2Dashboard Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="project-logo-placeholder" style="display: none;">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                            </div>
+                            <div class="project-title-info">
+                                <h3>CSV2Dashboard: Professional Data Visualization Tool</h3>
+                            </div>
+                        </div>
+                        <span class="project-period">Aug 2025 - Sep 2025</span>
+                    </div>
+                    <div class="project-thumbnail">
+                        <img src="images/projects/csv2dashboard-thumbnail.png" alt="CSV2Dashboard Thumbnail" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-thumbnail-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Thumbnail Placeholder</span>
+                        </div>
+                    </div>
+                    <p class="project-summary">Powerful Python tool that instantly converts CSV and Excel files into interactive web dashboards with advanced filtering and automatic chart generation.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/soroush-thr/csv2dashboard" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                    <div class="click-indicator">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Click to view details</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-section">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>One-command setup for instant interactive dashboards</li>
+                                <li>Smart auto-detection of column types with appropriate visualizations</li>
+                                <li>Multi-dimensional filtering with text search, ranges, and categorical selections</li>
+                                <li>Auto-generated histograms, bar charts, and time series plots</li>
+                                <li>Standalone HTML export for offline use</li>
+                                <li>Optimized for datasets up to 500K+ rows</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Problem Solved</h4>
+                            <p>Eliminates the need for complex data visualization setup by providing a one-command solution to convert raw data files into professional, interactive dashboards. Addresses the pain point of data analysts who need to quickly explore and share insights without custom dashboard development.</p>
+                        </div>
+                        <div class="project-skills">
+                            <h4>Technologies</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Data Visualization</span>
+                                <span class="skill-tag">Plotly</span>
+                                <span class="skill-tag">Gradio</span>
+                                <span class="skill-tag">Pandas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item clickable scroll-animate">
+                    <div class="project-header">
+                        <div class="project-title-row">
+                            <div class="project-logo">
+                                <img src="images/projects/formatfusion-logo.png" alt="FormatFusion Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="project-logo-placeholder" style="display: none;">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </div>
+                            </div>
+                            <div class="project-title-info">
+                                <h3>FormatFusion - Universal File Converter</h3>
+                            </div>
+                        </div>
+                        <span class="project-period">Jan 2025 - Jul 2025</span>
+                    </div>
+                    <div class="project-thumbnail">
+                        <img src="images/projects/formatfusion-thumbnail.png" alt="FormatFusion Thumbnail" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-thumbnail-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Thumbnail Placeholder</span>
+                        </div>
+                    </div>
+                    <p class="project-summary">High-performance desktop file converter for Windows with hardware acceleration, supporting images, audio, and video files with intelligent compression and quality optimization.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/soroush-thr/FormatFusion" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                    <div class="click-indicator">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Click to view details</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-section">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>3-5x faster video conversion with hardware acceleration (NVIDIA, Intel, AMD)</li>
+                                <li>Intelligent image compression with up to 90% file size reduction</li>
+                                <li>Professional audio conversion with multiple quality presets</li>
+                                <li>Modern MVVM architecture with clean separation of concerns</li>
+                                <li>Real-time progress tracking and error recovery</li>
+                                <li>50% reduction in memory consumption</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Problem Solved</h4>
+                            <p>Users need a fast, efficient way to convert multimedia files without sacrificing quality. FormatFusion provides hardware-accelerated conversion with intelligent optimization, dramatically reducing conversion time and file sizes while maintaining quality.</p>
+                        </div>
+                        <div class="project-skills">
+                            <h4>Technologies</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">PyQt6</span>
+                                <span class="skill-tag">FFmpeg</span>
+                                <span class="skill-tag">MVVM Architecture</span>
+                                <span class="skill-tag">Hardware Acceleration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item clickable scroll-animate">
+                    <div class="project-header">
+                        <div class="project-title-row">
+                            <div class="project-logo">
+                                <img src="images/projects/bitcoin-risk-logo.png" alt="Bitcoin Risk Analysis Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="project-logo-placeholder" style="display: none;">
+                                    <i class="fas fa-bitcoin"></i>
+                                </div>
+                            </div>
+                            <div class="project-title-info">
+                                <h3>Bitcoin Market Risk Analysis: Advanced Metrics and Quantitative Modeling</h3>
+                            </div>
+                        </div>
+                        <span class="project-period">Mar 2024 - May 2024</span>
+                    </div>
+                    <div class="project-thumbnail">
+                        <img src="images/projects/bitcoin-risk-thumbnail.png" alt="Bitcoin Risk Analysis Thumbnail" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-thumbnail-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Thumbnail Placeholder</span>
+                        </div>
+                    </div>
+                    <p class="project-summary">Comprehensive quantitative risk analysis of the Bitcoin market using advanced metrics, multiple risk assessment models, and sophisticated data analysis techniques.</p>
+                    <div class="click-indicator">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Click to view details</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-section">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Multiple risk assessment models (MVRV, Mayer Multiple, Supply Profitability, NUPL)</li>
+                                <li>Risk categorization system (Very High, High, Low, Very Low)</li>
+                                <li>Multi-factor risk assessment framework</li>
+                                <li>Sophisticated visualizations of risk metrics and price correlations</li>
+                                <li>Enhanced risk classification accuracy through historical backtesting</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Problem Solved</h4>
+                            <p>Cryptocurrency markets lack comprehensive risk assessment tools. This project provides institutional investors, algorithmic traders, and researchers with a quantitative framework for understanding Bitcoin market dynamics, reducing lag in identifying trend reversals compared to traditional methods.</p>
+                        </div>
+                        <div class="project-skills">
+                            <h4>Technologies</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Data Science</span>
+                                <span class="skill-tag">Statistical Modeling</span>
+                                <span class="skill-tag">Data Visualization</span>
+                                <span class="skill-tag">Financial Forecasting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item clickable scroll-animate">
+                    <div class="project-header">
+                        <div class="project-title-row">
+                            <div class="project-logo">
+                                <img src="images/projects/bitcoin-forecast-logo.png" alt="Bitcoin Forecast Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="project-logo-placeholder" style="display: none;">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                            </div>
+                            <div class="project-title-info">
+                                <h3>Bitcoin Forecast - Predictive Modeling for Return and Price Forecasting</h3>
+                            </div>
+                        </div>
+                        <span class="project-period">Sep 2023 - Feb 2024</span>
+                    </div>
+                    <div class="project-thumbnail">
+                        <img src="images/projects/bitcoin-forecast-thumbnail.png" alt="Bitcoin Forecast Thumbnail" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-thumbnail-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Thumbnail Placeholder</span>
+                        </div>
+                    </div>
+                    <p class="project-summary">Machine learning project for forecasting Bitcoin prices and returns using advanced feature engineering, automated data extraction, and optimized predictive models.</p>
+                    <div class="click-indicator">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Click to view details</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-section">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Automated data extraction and cleaning using Selenium</li>
+                                <li>Advanced feature engineering with lagged features and random forest importance</li>
+                                <li>Multiple ML models optimized for monthly return prediction</li>
+                                <li>Detailed visualizations of actual vs predicted returns and prices</li>
+                                <li>12% improvement in forecast accuracy</li>
+                                <li>80% reduction in data preparation time</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Problem Solved</h4>
+                            <p>Investors need accurate Bitcoin price predictions to manage portfolios effectively. This project provides a robust framework for forecasting that enables investors to predict market trends more accurately and make well-informed decisions regarding crypto assets.</p>
+                        </div>
+                        <div class="project-skills">
+                            <h4>Technologies</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Machine Learning</span>
+                                <span class="skill-tag">Data Science</span>
+                                <span class="skill-tag">Scikit-learn</span>
+                                <span class="skill-tag">Selenium</span>
+                                <span class="skill-tag">Financial Forecasting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item clickable scroll-animate">
+                    <div class="project-header">
+                        <div class="project-title-row">
+                            <div class="project-logo">
+                                <img src="images/projects/pastepal-logo.png" alt="PastePal Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="project-logo-placeholder" style="display: none;">
+                                    <i class="fas fa-clipboard"></i>
+                                </div>
+                            </div>
+                            <div class="project-title-info">
+                                <h3>PastePal - Advanced Clipboard Manager</h3>
+                            </div>
+                        </div>
+                        <span class="project-period">Nov 2023 - Feb 2024</span>
+                    </div>
+                    <div class="project-thumbnail">
+                        <img src="images/projects/pastepal-thumbnail.png" alt="PastePal Thumbnail" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-thumbnail-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Thumbnail Placeholder</span>
+                        </div>
+                    </div>
+                    <p class="project-summary">High-performance clipboard management application for Windows with real-time persistence, multi-threaded monitoring, and intelligent content history management.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/soroush-thr/PastePal" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                    <div class="click-indicator">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Click to view details</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-section">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Real-time clipboard monitoring with SQLite persistence</li>
+                                <li>Support for text, images, and files</li>
+                                <li>Debounced search, content pinning, and customizable themes</li>
+                                <li>Global hotkeys for instant content retrieval</li>
+                                <li>Image processing and text transformations</li>
+                                <li>Modular, extensible architecture</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Problem Solved</h4>
+                            <p>Native Windows clipboard only stores the last copied item, causing workflow friction. PastePal transforms the clipboard into an intelligent, persistent content history tool that eliminates productivity losses from lost clipboard data.</p>
+                        </div>
+                        <div class="project-skills">
+                            <h4>Technologies</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">PyQt6</span>
+                                <span class="skill-tag">SQLite</span>
+                                <span class="skill-tag">System Integration</span>
+                                <span class="skill-tag">Multi-threading</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item clickable scroll-animate">
+                    <div class="project-header">
+                        <div class="project-title-row">
+                            <div class="project-logo">
+                                <img src="images/projects/market-analysis-logo.png" alt="Market Analysis Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="project-logo-placeholder" style="display: none;">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                            </div>
+                            <div class="project-title-info">
+                                <h3>Custom Dataset Market Analysis with ChatGPT and OpenAI API</h3>
+                            </div>
+                        </div>
+                        <span class="project-period">Nov 2023 - Jan 2024</span>
+                    </div>
+                    <div class="project-thumbnail">
+                        <img src="images/projects/market-analysis-thumbnail.png" alt="Market Analysis Thumbnail" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="project-thumbnail-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Thumbnail Placeholder</span>
+                        </div>
+                    </div>
+                    <p class="project-summary">Dynamic chat-based interface for conducting tailored market analysis using custom datasets, leveraging ChatGPT and OpenAI API for insightful analysis and actionable insights.</p>
+                    <div class="click-indicator">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>Click to view details</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-section">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Custom dataset upload for industry-specific or proprietary data</li>
+                                <li>Interactive chat interface with conversational prompts</li>
+                                <li>Context-aware analysis generating market insights, trends, and predictions</li>
+                                <li>Chat history management with privacy controls</li>
+                                <li>Transparent cost monitoring for OpenAI GPT-4 usage</li>
+                            </ul>
+                        </div>
+                        <div class="project-section">
+                            <h4>Problem Solved</h4>
+                            <p>Businesses need to analyze their proprietary datasets but lack the tools for intuitive, conversational analysis. This project enables users to upload custom datasets and engage in natural language conversations to extract valuable market insights without technical expertise.</p>
+                        </div>
+                        <div class="project-skills">
+                            <h4>Technologies</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">AI</span>
+                                <span class="skill-tag">OpenAI API</span>
+                                <span class="skill-tag">NLP</span>
+                                <span class="skill-tag">Data Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Soroush Taheri. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:soroush.thr@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/soroush-thr" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/soroush-thr" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?hl=en&user=hhoL598AAAAJ" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://orcid.org/my-orcid?orcid=0000-0002-5885-3036" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+                    <a href="https://www.webofscience.com/wos/author/record/GVU-0703-2022" target="_blank" title="Web of Science"><i class="fas fa-database"></i></a>
+                    <a href="https://www.researchgate.net/profile/Soroush_Taheri" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // Project expansion functionality
+        (function() {
+            function setupExpansion() {
+                var items = document.querySelectorAll('.project-item.clickable');
+                for (var i = 0; i < items.length; i++) {
+                    items[i].onclick = function(e) {
+                        if (e.target.closest('.project-link')) {
+                            return;
+                        }
+                        this.classList.toggle('expanded');
+                        var span = this.querySelector('.click-indicator span');
+                        if (span) {
+                            span.textContent = this.classList.contains('expanded') 
+                                ? 'Click to hide details' 
+                                : 'Click to view details';
+                        }
+                    };
+                }
+            }
+            
+            // Initialize scroll animations for projects
+            function initProjectScrollAnimations() {
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate');
+                        }
+                    });
+                }, observerOptions);
+
+                const projectItems = document.querySelectorAll('.project-item.scroll-animate');
+                projectItems.forEach(item => {
+                    observer.observe(item);
+                });
+            }
+            
+            if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                setupExpansion();
+                initProjectScrollAnimations();
+            } else {
+                document.addEventListener('DOMContentLoaded', function() {
+                    setupExpansion();
+                    initProjectScrollAnimations();
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
