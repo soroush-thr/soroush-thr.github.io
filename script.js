@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initTypingEffect();
     initParallaxEffect();
     initExperienceClickable();
+    initPublicationClickable();
 });
 
 // Navigation functionality
@@ -592,6 +593,47 @@ function initExperienceClickable() {
                 }
                 
                 // Update text
+                var span = this.querySelector('.click-indicator span');
+                if (span) {
+                    span.textContent = this.classList.contains('expanded') 
+                        ? 'Click to hide details' 
+                        : 'Click to view details';
+                }
+            });
+        });
+    }
+    
+    // Try immediately
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupClickable);
+    } else {
+        setupClickable();
+    }
+    
+    // Also try after a short delay as fallback
+    setTimeout(setupClickable, 500);
+}
+
+// Publication section clickable functionality - SIMPLE VERSION (matching experience)
+function initPublicationClickable() {
+    function setupClickable() {
+        const items = document.querySelectorAll('.publication-item.clickable');
+        
+        items.forEach(function(item) {
+            // Remove any existing handlers
+            item.onclick = null;
+            
+            // Add simple click handler (exactly like experience)
+            item.addEventListener('click', function(e) {
+                // Don't prevent default if clicking on a link
+                if (e.target.closest('.publication-link')) {
+                    return;
+                }
+                
+                e.preventDefault();
+                e.stopPropagation();
+                
+                this.classList.toggle('expanded');
                 var span = this.querySelector('.click-indicator span');
                 if (span) {
                     span.textContent = this.classList.contains('expanded') 
