@@ -1773,8 +1773,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .certifications-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1.2rem;
     margin-top: 1.5rem;
     max-width: 900px;
@@ -1792,6 +1793,8 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid var(--border-color);
     position: relative;
     overflow: hidden;
+    width: calc((100% - 2 * 1.2rem) / 3);
+    flex: 0 0 calc((100% - 2 * 1.2rem) / 3);
 }
 
 .certification-item::before {
@@ -1896,7 +1899,12 @@ h1, h2, h3, h4, h5, h6 {
 /* Responsive Design for Certifications */
 @media (max-width: 1024px) {
     .certifications-grid {
-        grid-template-columns: repeat(2, 1fr);
+        /* Keep flexbox, just change width */
+    }
+    
+    .certification-item {
+        width: calc((100% - 1 * 1.2rem) / 2);
+        flex: 0 0 calc((100% - 1 * 1.2rem) / 2);
     }
 }
 
@@ -1906,9 +1914,13 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .certifications-grid {
-        grid-template-columns: 1fr;
         gap: 1rem;
         margin-top: 1.5rem;
+    }
+    
+    .certification-item {
+        width: 100%;
+        flex: 0 0 100%;
     }
     
     .certification-item {
