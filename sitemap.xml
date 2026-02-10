@@ -58,6 +58,14 @@
         <priority>0.7</priority>
     </url>
     
+    <!-- Services page -->
+    <url>
+        <loc>https://soroush-thr.github.io/services.html</loc>
+        <lastmod>2025-02-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
     <!-- Static assets -->
     <url>
         <loc>https://soroush-thr.github.io/styles.css</loc>

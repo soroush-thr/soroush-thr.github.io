@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Soroush Taheri</title>
+    <meta name="description" content="Professional Data Science and Machine Learning services offered by Soroush Taheri. Get expert consulting, model development, and ML solutions.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/thumbnail.png">
+    <link rel="apple-touch-icon" href="images/thumbnail.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Theme initialization script (prevents flash) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="images/thumbnail.png" alt="Logo" class="nav-logo-img">
+                    Soroush Taheri
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="experience.html" class="nav-link">Experience</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="services.html" class="nav-link active">Services</a>
+                <a href="education.html" class="nav-link">Education</a>
+                <a href="research.html" class="nav-link">Research</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Page Navigator -->
+    <section class="services-page-nav">
+        <div class="container">
+            <div class="services-page-nav-links">
+                <a href="#services-list" class="services-page-nav-link">
+                    <i class="fas fa-list"></i>
+                    <span>Services</span>
+                </a>
+                <a href="#services-contact" class="services-page-nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+                <a href="#book-meeting" class="services-page-nav-link">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Book a Meeting</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Hero Section -->
+    <section id="services" class="services-hero">
+        <div class="container">
+            <h2 class="section-title">Professional Services</h2>
+            <div class="services-intro">
+                <p class="services-description">
+                    I offer comprehensive Data Science and Machine Learning services to help businesses leverage AI and data-driven insights. 
+                    With 7+ years of experience in Deep Learning, Computer Vision, and NLP, I deliver solutions that drive measurable business impact.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services-list" class="services-section">
+        <div class="container">
+            <div class="services-grid">
+                <!-- Service 1: Data Science Consulting -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-title">Data Science Consulting</h3>
+                    <p class="service-description">
+                        Expert data analysis, insights generation, and strategic recommendations to help your business make data-driven decisions.
+                    </p>
+                    <ul class="service-features">
+                        <li>Data analysis and visualization</li>
+                        <li>Business intelligence insights</li>
+                        <li>Strategic recommendations</li>
+                        <li>Performance metrics and KPIs</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price-amount">$25</span>
+                        <span class="price-unit">USD/hour</span>
+                    </div>
+                    <button class="btn btn-primary service-btn" onclick="scrollToContact()">
+                        <i class="fas fa-envelope"></i>
+                        Get Quote
+                    </button>
+                </div>
+
+                <!-- Service 2: Machine Learning Model Development -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="service-title">Machine Learning Model Development</h3>
+                    <p class="service-description">
+                        Custom ML models tailored to your specific business problems, from concept to deployment-ready solutions.
+                    </p>
+                    <ul class="service-features">
+                        <li>Custom model development</li>
+                        <li>Feature engineering</li>
+                        <li>Model training and optimization</li>
+                        <li>Performance evaluation</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price-amount">$1,000</span>
+                        <span class="price-unit">USD/project</span>
+                    </div>
+                    <button class="btn btn-primary service-btn" onclick="scrollToContact()">
+                        <i class="fas fa-envelope"></i>
+                        Get Quote
+                    </button>
+                </div>
+
+                <!-- Service 3: Deep Learning Solutions -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="service-title">Deep Learning Solutions</h3>
+                    <p class="service-description">
+                        Advanced neural networks, CNNs, RNNs, and transformer models for complex problems requiring deep learning expertise.
+                    </p>
+                    <ul class="service-features">
+                        <li>Neural network architecture design</li>
+                        <li>CNN, RNN, LSTM implementation</li>
+                        <li>Transfer learning and fine-tuning</li>
+                        <li>Model optimization and tuning</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price-amount">$1,200</span>
+                        <span class="price-unit">USD/project</span>
+                    </div>
+                    <button class="btn btn-primary service-btn" onclick="scrollToContact()">
+                        <i class="fas fa-envelope"></i>
+                        Get Quote
+                    </button>
+                </div>
+
+                <!-- Service 4: Computer Vision Projects -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="service-title">Computer Vision Projects</h3>
+                    <p class="service-description">
+                        Image analysis, object detection, classification, and visual recognition systems for various applications.
+                    </p>
+                    <ul class="service-features">
+                        <li>Image classification and recognition</li>
+                        <li>Object detection and tracking</li>
+                        <li>3D image analysis</li>
+                        <li>Custom CV model development</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price-amount">$1,100</span>
+                        <span class="price-unit">USD/project</span>
+                    </div>
+                    <button class="btn btn-primary service-btn" onclick="scrollToContact()">
+                        <i class="fas fa-envelope"></i>
+                        Get Quote
+                    </button>
+                </div>
+
+                <!-- Service 5: NLP & Text Analytics -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="service-title">NLP & Text Analytics</h3>
+                    <p class="service-description">
+                        Sentiment analysis, topic modeling, text classification, and advanced NLP solutions using BERT and transformer models.
+                    </p>
+                    <ul class="service-features">
+                        <li>Sentiment analysis</li>
+                        <li>Topic modeling and extraction</li>
+                        <li>Text classification</li>
+                        <li>BERT-based embeddings</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price-amount">$1,000</span>
+                        <span class="price-unit">USD/project</span>
+                    </div>
+                    <button class="btn btn-primary service-btn" onclick="scrollToContact()">
+                        <i class="fas fa-envelope"></i>
+                        Get Quote
+                    </button>
+                </div>
+
+                <!-- Service 6: MLOps & Production Deployment -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="service-title">MLOps & Production Deployment</h3>
+                    <p class="service-description">
+                        Deploy ML models to production, set up scalable pipelines, and ensure reliable model serving infrastructure.
+                    </p>
+                    <ul class="service-features">
+                        <li>Model deployment and serving</li>
+                        <li>CI/CD pipeline setup</li>
+                        <li>Cloud infrastructure (AWS)</li>
+                        <li>Monitoring and maintenance</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price-amount">$1,100</span>
+                        <span class="price-unit">USD/project</span>
+                    </div>
+                    <button class="btn btn-primary service-btn" onclick="scrollToContact()">
+                        <i class="fas fa-envelope"></i>
+                        Get Quote
+                    </button>
+                </div>
+
+                <!-- Service 7: Time Series Forecasting -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-area"></i>
+                    </div>
+                    <h3 class="service-title">Time Series Forecasting</h3>
+                    <p class="service-description">
+                        Predictive analytics for business metrics, sales forecasting, demand prediction, and trend analysis.
+                    </p>
+                    <ul class="service-features">
+                        <li>Sales and demand forecasting</li>
+                        <li>LSTM and ARIMA models</li>
+                        <li>Trend analysis</li>
+                        <li>Business metric predictions</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price-amount">$900</span>
+                        <span class="price-unit">USD/project</span>
+                    </div>
+                    <button class="btn btn-primary service-btn" onclick="scrollToContact()">
+                        <i class="fas fa-envelope"></i>
+                        Get Quote
+                    </button>
+                </div>
+
+                <!-- Service 8: Research Collaboration -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3 class="service-title">Research Collaboration</h3>
+                    <p class="service-description">
+                        Academic research partnerships, publication support, and collaborative research projects in ML and Data Science.
+                    </p>
+                    <ul class="service-features">
+                        <li>Research methodology design</li>
+                        <li>Data collection and analysis</li>
+                        <li>Paper writing and publication</li>
+                        <li>Academic collaboration</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price-amount">$25</span>
+                        <span class="price-unit">USD/hour</span>
+                    </div>
+                    <button class="btn btn-primary service-btn" onclick="scrollToContact()">
+                        <i class="fas fa-envelope"></i>
+                        Get Quote
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="services-contact" class="services-contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="services-contact-content">
+                <div class="contact-form-wrapper">
+                    <h3>Request a Quote</h3>
+                    <p class="contact-form-description">
+                        Interested in any of my services? Fill out the form below and I'll get back to you within 24 hours.
+                    </p>
+                    <form id="servicesContactForm" class="services-contact-form">
+                        <div class="form-group">
+                            <label for="services-name">Name *</label>
+                            <input type="text" id="services-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="services-email">Email *</label>
+                            <input type="email" id="services-email" name="email" required>
+                        </div>
+                        <div class="form-group form-group-full form-group-service-interest">
+                            <label for="services-service">Service Interest *</label>
+                            <div class="service-interest-row">
+                                <select id="services-service" name="service" required>
+                                    <option value="">Select a service...</option>
+                                    <option value="Data Science Consulting">Data Science Consulting</option>
+                                    <option value="Machine Learning Model Development">Machine Learning Model Development</option>
+                                    <option value="Deep Learning Solutions">Deep Learning Solutions</option>
+                                    <option value="Computer Vision Projects">Computer Vision Projects</option>
+                                    <option value="NLP & Text Analytics">NLP & Text Analytics</option>
+                                    <option value="MLOps & Production Deployment">MLOps & Production Deployment</option>
+                                    <option value="Time Series Forecasting">Time Series Forecasting</option>
+                                    <option value="Research Collaboration">Research Collaboration</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div class="captcha-container">
+                                    <span id="services-captcha-question">1 + 1 = ?</span>
+                                    <input type="number" id="services-captcha" name="services_captcha" required>
+                                    <button type="button" class="btn-refresh" id="services-refresh-captcha" aria-label="New question">
+                                        <i class="fas fa-sync"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-full message-group">
+                            <label for="services-message">Message *</label>
+                            <textarea id="services-message" name="message" rows="5" required placeholder="Tell me about your project requirements..."></textarea>
+                        </div>
+                        <div class="form-group form-group-full button-group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendly Section -->
+    <section id="book-meeting" class="calendly-section">
+        <div class="container">
+            <h2 class="section-title">Schedule a Meeting</h2>
+            <div class="calendly-wrapper">
+                <p class="calendly-description">
+                    Book a 30-minute meeting directly in my calendar to discuss your project and how I can help.
+                </p>
+                <!-- Calendly inline widget begin -->
+                <div class="calendly-inline-widget" data-url="https://calendly.com/soroush-thr/30min" style="min-width:320px;height:780px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                <!-- Calendly inline widget end -->
+                <p class="calendly-note">
+                    <i class="fas fa-info-circle"></i>
+                    You can adjust availability and meeting details from your Calendly dashboard any time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Soroush Taheri. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:soroush.thr@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/soroush-thr" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/soroush-thr" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?hl=en&user=hhoL598AAAAJ" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://orcid.org/my-orcid?orcid=0000-0002-5885-3036" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+                    <a href="https://www.webofscience.com/wos/author/record/GVU-0703-2022" target="_blank" title="Web of Science"><i class="fas fa-database"></i></a>
+                    <a href="https://www.researchgate.net/profile/Soroush_Taheri" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Scroll to contact form function
+        function scrollToContact() {
+            document.getElementById('services-contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>

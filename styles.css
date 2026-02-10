@@ -2574,3 +2574,501 @@ h1, h2, h3, h4, h5, h6 {
         transform: rotate(360deg);
     }
 }
+
+/* Services Page Styles */
+.services-page-nav {
+    margin-top: 60px;
+    padding: 0.5rem 0;
+    background: rgba(10, 25, 41, 0.9);
+    position: sticky;
+    top: 60px;
+    z-index: 900;
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="light"] .services-page-nav {
+    background: rgba(248, 250, 252, 0.95);
+}
+
+.services-page-nav-links {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.services-page-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    background: var(--background-secondary);
+    transition: var(--transition);
+}
+
+.services-page-nav-link i {
+    font-size: 0.85rem;
+}
+
+.services-page-nav-link:hover {
+    border-color: var(--primary-color);
+    color: var(--text-primary);
+    background: var(--card-bg);
+    box-shadow: var(--shadow-light);
+    transform: translateY(-1px);
+}
+
+.services-hero {
+    padding: 3.25rem 0 1.25rem 0;
+    background: transparent;
+}
+
+.services-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.services-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.services-section {
+    padding: 1.25rem 0 3.25rem 0;
+    background: transparent;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.25rem;
+}
+
+.service-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.service-card:hover::before {
+    transform: scaleX(1);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium), var(--shadow-glow);
+    background: var(--card-hover);
+    border-color: var(--border-hover);
+}
+
+.service-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--gradient-primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: var(--shadow-medium);
+}
+
+.service-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.service-title {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+.service-description {
+    color: var(--text-secondary);
+    line-height: 1.45;
+    margin-bottom: 0.75rem;
+    font-size: 0.88rem;
+    flex-grow: 1;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.service-features li {
+    color: var(--text-secondary);
+    line-height: 1.4;
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.86rem;
+}
+
+.service-features li::before {
+    content: '✓';
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1rem;
+}
+
+.service-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem 0.9rem;
+    background: var(--background-secondary);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.price-amount {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.price-unit {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.service-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+}
+
+/* Services Contact Form Section */
+.services-contact {
+    padding: 3.25rem 0;
+    background: transparent;
+}
+
+.services-contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-form-wrapper {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 14px;
+    padding: 2rem;
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-color);
+}
+
+.contact-form-wrapper h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.contact-form-description {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.services-contact-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.25rem;
+    row-gap: 1rem;
+}
+
+.services-contact-form .form-group {
+    margin-bottom: 0;
+}
+
+.services-contact-form .form-group-full {
+    grid-column: 1 / -1;
+}
+
+.form-group-service-interest .service-interest-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.form-group-service-interest .service-interest-row select {
+    flex: 1 1 220px;
+}
+
+.form-group-service-interest .service-interest-row .captcha-container {
+    flex: 0 0 auto;
+}
+
+.services-contact-form label {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.services-contact-form input,
+.services-contact-form select,
+.services-contact-form textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: var(--transition);
+    font-family: inherit;
+    background: var(--background-secondary);
+    color: var(--text-primary);
+}
+
+.services-contact-form input:focus,
+.services-contact-form select:focus,
+.services-contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.services-contact-form select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234A90E2' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+.services-contact-form textarea {
+    resize: vertical;
+    min-height: 90px;
+    font-family: inherit;
+}
+
+.services-contact-form button[type="submit"] {
+    width: 100%;
+    margin-top: 0.1rem;
+}
+
+/* Calendly Section */
+.calendly-section {
+    padding: 3.25rem 0 3.5rem 0;
+    background: transparent;
+}
+
+.calendly-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.calendly-description {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.calendly-inline-widget {
+    width: 100%;
+    min-height: 780px;
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-medium), var(--shadow-glow);
+    border: 1px solid var(--border-color);
+    background: var(--background-secondary);
+}
+
+.services-contact .section-title,
+.calendly-section .section-title {
+    margin-bottom: 1.9rem;
+}
+
+.calendly-note {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.calendly-note i {
+    color: var(--primary-color);
+}
+
+.calendly-note a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.calendly-note a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Responsive Design for Services */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-hero {
+        padding: 2.75rem 0 1rem 0;
+    }
+
+    .services-section {
+        padding: 1.25rem 0 2.5rem 0;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .service-card {
+        padding: 1.25rem 1.35rem;
+    }
+
+    .service-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .service-icon i {
+        font-size: 1.5rem;
+    }
+
+    .service-title {
+        font-size: 1.2rem;
+    }
+
+    .price-amount {
+        font-size: 1.75rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 1.4rem;
+    }
+
+    .contact-form-wrapper h3 {
+        font-size: 1.5rem;
+    }
+
+    .calendly-section {
+        padding: 2.5rem 0 3rem 0;
+    }
+
+    .calendly-inline-widget {
+        min-height: 520px;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-description {
+        font-size: 1rem;
+    }
+
+    .service-card {
+        padding: 1.1rem 1.2rem;
+    }
+
+    .service-title {
+        font-size: 1.1rem;
+    }
+
+    .service-description {
+        font-size: 0.9rem;
+    }
+
+    .service-features li {
+        font-size: 0.85rem;
+    }
+
+    .price-amount {
+        font-size: 1.5rem;
+    }
+
+    .price-unit {
+        font-size: 0.85rem;
+    }
+
+    .contact-form-wrapper {
+        padding: 1.15rem;
+    }
+
+    .contact-form-wrapper h3 {
+        font-size: 1.3rem;
+    }
+
+    .contact-form-description {
+        font-size: 0.95rem;
+    }
+
+    .calendly-description {
+        font-size: 1rem;
+    }
+
+    .calendly-inline-widget {
+        min-height: 460px;
+    }
+}

@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initPublicationFilter();
     initContactForm();
+    initServicesContactForm();
+    initServiceButtons();
     initSmoothScrolling();
     initTypingEffect();
     initParallaxEffect();
@@ -134,10 +136,11 @@ function initPublicationFilter() {
 // Contact form functionality with EmailJS and CAPTCHA
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
+    // If there's no contact form on this page, do nothing
+    if (!contactForm) return;
     
     // Initialize EmailJS with your public key
-    // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
-    emailjs.init('YOUR_PUBLIC_KEY');
+    emailjs.init('vrr9yGdiscV3Bvko8');
     
     // Initialize CAPTCHA
     initCaptcha();
@@ -175,9 +178,10 @@ function initContactForm() {
         const templateParams = {
             from_name: name,
             from_email: email,
+            email: email,
+            service_interest: subject || 'General contact',
             subject: subject,
-            message: message,
-            to_email: 'soroush.thr@gmail.com' // Your email address
+            message: message
         };
         
         // Show loading state
@@ -188,7 +192,7 @@ function initContactForm() {
         submitBtn.disabled = true;
         
         // Send email using EmailJS
-        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        emailjs.send('service_eqhc7s4', 'template_6fxliuh', templateParams)
             .then(function(response) {
                 showNotification('Thank you for your message! I\'ll get back to you soon.', 'success');
                 contactForm.reset();
@@ -202,6 +206,136 @@ function initContactForm() {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             });
+    });
+}
+
+// Services contact form functionality with EmailJS
+function initServicesContactForm() {
+    const servicesContactForm = document.getElementById('servicesContactForm');
+    if (!servicesContactForm) return; // Exit if form doesn't exist on this page
+    
+    // Check if EmailJS is loaded
+    if (typeof emailjs === 'undefined') {
+        console.warn('EmailJS is not loaded. Please include the EmailJS script.');
+        return;
+    }
+    
+    // Initialize EmailJS with your public key (same as contact form)
+    try {
+        emailjs.init('vrr9yGdiscV3Bvko8');
+    } catch (e) {
+        console.warn('EmailJS already initialized or error:', e);
+    }
+    
+    // Initialize simple "I'm not a robot" math check
+    initServicesCaptcha();
+    
+    servicesContactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(servicesContactForm);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const service = formData.get('service');
+        const message = formData.get('message');
+        const captchaRaw = formData.get('services_captcha');
+        const captchaValue = captchaRaw !== null ? parseInt(captchaRaw, 10) : NaN;
+        
+        // Simple validation
+        if (!name || !email || !service || !message) {
+            showNotification('Please fill in all fields.', 'error');
+            return;
+        }
+        
+        if (!isValidEmail(email)) {
+            showNotification('Please enter a valid email address.', 'error');
+            return;
+        }
+        
+        // CAPTCHA validation for services form
+        if (!validateServicesCaptcha(captchaValue)) {
+            showNotification('Please confirm you are not a robot by solving the small math question.', 'error');
+            generateNewServicesCaptcha();
+            const captchaInput = document.getElementById('services-captcha');
+            if (captchaInput) {
+                captchaInput.value = '';
+                captchaInput.focus();
+            }
+            return;
+        }
+        
+        // Prepare email template parameters
+        const templateParams = {
+            from_name: name,
+            from_email: email,
+            email: email,
+            service_interest: service,
+            message: message,
+            subject: `Service Inquiry: ${service}`
+        };
+        
+        // Show loading state
+        const submitBtn = servicesContactForm.querySelector('button[type="submit"]');
+        const originalHTML = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+        
+        // Send email using EmailJS
+        emailjs.send('service_eqhc7s4', 'template_6fxliuh', templateParams)
+            .then(function(response) {
+                showNotification('Thank you for your inquiry! I\'ll get back to you within 24 hours.', 'success');
+                servicesContactForm.reset();
+            }, function(error) {
+                showNotification('Sorry, there was an error sending your message. Please try again or contact me directly at soroush.thr@gmail.com', 'error');
+                console.error('EmailJS error:', error);
+            })
+            .finally(function() {
+                // Reset button state
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.disabled = false;
+            });
+    });
+}
+
+// Link service cards to services form
+function initServiceButtons() {
+    const servicesContactForm = document.getElementById('servicesContactForm');
+    const serviceSelect = document.getElementById('services-service');
+    if (!servicesContactForm || !serviceSelect) return;
+
+    const buttons = document.querySelectorAll('.service-card .service-btn');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Don't let the button move focus away before we set the value
+            e.preventDefault();
+
+            const card = this.closest('.service-card');
+            if (!card) return;
+
+            const titleEl = card.querySelector('.service-title');
+            const title = titleEl ? titleEl.textContent.trim() : '';
+            if (!title) return;
+
+            // Try to match option by value or visible text
+            let matched = false;
+            Array.from(serviceSelect.options).forEach(option => {
+                const optText = option.text.trim();
+                const optValue = (option.value || '').trim();
+                if (!matched && (optText === title || optValue === title)) {
+                    serviceSelect.value = option.value;
+                    matched = true;
+                }
+            });
+
+            // Scroll to the form so the user can continue
+            document.getElementById('services-contact')?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
     });
 }
 
@@ -252,6 +386,35 @@ function generateNewCaptcha() {
 
 function validateCaptcha(userAnswer) {
     return userAnswer === captchaAnswer;
+}
+
+// Simple math CAPTCHA for services form ("I'm not a robot")
+let servicesCaptchaAnswer = 0;
+
+function initServicesCaptcha() {
+    // Elements only exist on services page
+    const questionEl = document.getElementById('services-captcha-question');
+    const refreshBtn = document.getElementById('services-refresh-captcha');
+    if (!questionEl || !refreshBtn) return;
+
+    generateNewServicesCaptcha();
+    refreshBtn.addEventListener('click', generateNewServicesCaptcha);
+}
+
+function generateNewServicesCaptcha() {
+    const questionEl = document.getElementById('services-captcha-question');
+    if (!questionEl) return;
+
+    const num1 = Math.floor(Math.random() * 5) + 1; // 1–6
+    const num2 = Math.floor(Math.random() * 5) + 1;
+    const question = `${num1} + ${num2}`;
+    servicesCaptchaAnswer = num1 + num2;
+
+    questionEl.textContent = question;
+}
+
+function validateServicesCaptcha(userAnswer) {
+    return typeof userAnswer === 'number' && !Number.isNaN(userAnswer) && userAnswer === servicesCaptchaAnswer;
 }
 
 // Email validation
