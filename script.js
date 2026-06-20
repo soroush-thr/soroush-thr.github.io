@@ -743,28 +743,28 @@ function initExperienceClickable() {
             // Remove any existing handlers
             item.onclick = null;
             
-            // Add simple click handler
-            item.addEventListener('click', function(e) {
+            // Use onclick so repeated calls from setTimeout don't stack handlers
+            item.onclick = function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                
+
                 var isExpanded = this.classList.contains('expanded');
-                
+
                 // Toggle the expanded class
                 if (isExpanded) {
                     this.classList.remove('expanded');
                 } else {
                     this.classList.add('expanded');
                 }
-                
+
                 // Update text
                 var span = this.querySelector('.click-indicator span');
                 if (span) {
-                    span.textContent = this.classList.contains('expanded') 
-                        ? 'Click to hide details' 
+                    span.textContent = this.classList.contains('expanded')
+                        ? 'Click to hide details'
                         : 'Click to view details';
                 }
-            });
+            };
         });
     }
     
@@ -788,24 +788,24 @@ function initPublicationClickable() {
             // Remove any existing handlers
             item.onclick = null;
             
-            // Add simple click handler (exactly like experience)
-            item.addEventListener('click', function(e) {
+            // Use onclick so repeated calls from setTimeout don't stack handlers
+            item.onclick = function(e) {
                 // Don't prevent default if clicking on a link
                 if (e.target.closest('.publication-link')) {
                     return;
                 }
-                
+
                 e.preventDefault();
                 e.stopPropagation();
-                
+
                 this.classList.toggle('expanded');
                 var span = this.querySelector('.click-indicator span');
                 if (span) {
-                    span.textContent = this.classList.contains('expanded') 
-                        ? 'Click to hide details' 
+                    span.textContent = this.classList.contains('expanded')
+                        ? 'Click to hide details'
                         : 'Click to view details';
                 }
-            });
+            };
         });
     }
     
