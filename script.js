@@ -554,19 +554,20 @@ function animateCounters() {
     
     counters.forEach(counter => {
         const target = parseInt(counter.textContent.replace(/[^\d]/g, ''));
+        const suffix = counter.textContent.includes('%') ? '%' : (counter.textContent.includes('+') ? '+' : '');
         const increment = target / 100;
         let current = 0;
-        
+
         const updateCounter = () => {
+            current += increment;
             if (current < target) {
-                current += increment;
-                counter.textContent = Math.ceil(current) + (counter.textContent.includes('%') ? '%' : '+');
+                counter.textContent = Math.ceil(current) + suffix;
                 requestAnimationFrame(updateCounter);
             } else {
-                counter.textContent = counter.textContent;
+                counter.textContent = target + suffix;
             }
         };
-        
+
         updateCounter();
     });
 }
