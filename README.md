@@ -8,7 +8,7 @@ Visit the live portfolio: [https://soroush-thr.github.io](https://soroush-thr.gi
 
 ## 📋 Features
 
-- **Multi-Page Architecture**: Dedicated pages for Home, About, Experience, Projects, Services, Education, Research, and Contact
+- **Multi-Page Architecture**: Dedicated pages for Home, About, Experience, Projects, Services, Education, Research, Blog, and Contact
 - **Dark/Light Theme Toggle**: User preference-based theme switching with persistent storage
 - **Professional Design**: Modern, clean interface with sophisticated color scheme and typography
 - **Responsive Layout**: Fully optimized for desktop, tablet, and mobile devices
@@ -46,7 +46,11 @@ portfolio/
 ├── robots.txt          # Robots file, including explicit allow rules for AI/LLM crawlers
 ├── sitemap.xml         # XML sitemap listing the site's actual pages
 ├── llms.txt            # Plain-text summary of the site for AI assistants/LLM crawlers
+├── LICENSE             # MIT License (covers the code only, not personal content)
 ├── README.md           # Project documentation
+├── blog/               # Blog section (BlogPosting JSON-LD per post)
+│   ├── index.html      # Blog post listing
+│   └── recall-local-first-ai-memory.html  # First post
 └── images/
     ├── personal.jpg          # Profile photo (500x500, optimized)
     ├── thumbnail.png         # Site logo (used in the nav bar)
@@ -66,7 +70,8 @@ portfolio/
 5. **Services (services.html)**: Data science/ML consulting services offered, with pricing
 6. **Education (education.html)**: Academic background, relevant coursework, and certifications
 7. **Research (research.html)**: Research publications with filtering (Journal Articles, Conference Papers)
-8. **Contact (contact.html)**: Professional contact information and social media links
+8. **Blog (blog/index.html)**: Technical notes and write-ups, each with its own `BlogPosting` structured data
+9. **Contact (contact.html)**: Professional contact information and social media links
 
 ## 🚀 Getting Started
 
@@ -167,6 +172,7 @@ The site ships two themes, toggled via `[data-theme]` on `<html>` and persisted 
 - Add or remove projects in `projects.html`
 - Update services and pricing in `services.html`
 - Update publications in `research.html`
+- Add new posts under `blog/` (copy `blog/recall-local-first-ai-memory.html` as a template, add a card to `blog/index.html`, and add the URL to `sitemap.xml` and `llms.txt`)
 - Modify education and certifications in `education.html`
 - Update contact information in `contact.html`
 - Keep `llms.txt`, `sitemap.xml`, and each page's JSON-LD block in sync when adding/removing pages or facts
@@ -256,6 +262,7 @@ The code in this repository (HTML/CSS/JS) is available under the [MIT License](L
 
 - ✅ **SEO & Structured Data Overhaul**: Fixed sitemap.xml, expanded robots.txt for AI crawlers, added canonical/OG/Twitter tags and JSON-LD (Person, BreadcrumbList, ScholarlyArticle, Service) to every page, added `llms.txt` and `404.html`
 - ✅ **Image Optimization**: Compressed all project thumbnails and the site logo (~60-70% smaller), resized the profile photo to its display size, generated a proper favicon set (16/32/180) and a dedicated 1200×630 social share image, and added lazy-loading to below-the-fold images
+- ✅ **Blog Section**: Added a `/blog/` section with its own listing page, a first post on building Recall, and `BlogPosting`/`Blog` JSON-LD
 - ✅ **Services Page**: Added a dedicated Services page listing consulting offerings and pricing
 - ✅ **Multi-Page Architecture**: Converted to dedicated pages for better organization and SEO
 - ✅ **Dark/Light Theme**: Implemented theme toggle with persistent user preference storage

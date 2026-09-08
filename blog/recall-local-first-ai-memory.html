@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Recall: A Local-First Memory System for AI Assistants | Soroush Taheri</title>
+    <meta name="description" content="Why AI assistants forget everything between sessions, and how Recall, a local-first CLI and MCP server, gives them persistent, private memory without a cloud dependency.">
+    <meta name="author" content="Soroush Taheri">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://soroush-thr.github.io/blog/recall-local-first-ai-memory.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Building Recall: A Local-First Memory System for AI Assistants">
+    <meta property="og:description" content="Why AI assistants forget everything between sessions, and how Recall, a local-first CLI and MCP server, gives them persistent, private memory without a cloud dependency.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://soroush-thr.github.io/blog/recall-local-first-ai-memory.html">
+    <meta property="og:image" content="https://soroush-thr.github.io/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Soroush Taheri">
+    <meta property="article:published_time" content="2026-09-08">
+    <meta property="article:author" content="Soroush Taheri">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Building Recall: A Local-First Memory System for AI Assistants">
+    <meta name="twitter:description" content="Why AI assistants forget everything between sessions, and how a local-first CLI and MCP server can fix that.">
+    <meta name="twitter:image" content="https://soroush-thr.github.io/images/og-image.jpg">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Theme initialization script (prevents flash) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
+    <!-- Structured Data: Breadcrumb -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soroush-thr.github.io/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://soroush-thr.github.io/blog/"},
+            {"@type": "ListItem", "position": 3, "name": "Building Recall", "item": "https://soroush-thr.github.io/blog/recall-local-first-ai-memory.html"}
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Building Recall: A Local-First Memory System for AI Assistants",
+        "description": "Why AI assistants forget everything between sessions, and how Recall, a local-first CLI and MCP server, gives them persistent, private memory without a cloud dependency.",
+        "url": "https://soroush-thr.github.io/blog/recall-local-first-ai-memory.html",
+        "datePublished": "2026-09-08",
+        "dateModified": "2026-09-08",
+        "author": {"@type": "Person", "name": "Soroush Taheri", "url": "https://soroush-thr.github.io/"},
+        "publisher": {"@type": "Person", "name": "Soroush Taheri"},
+        "image": "https://soroush-thr.github.io/images/projects/recall-thumbnail.png",
+        "mainEntityOfPage": "https://soroush-thr.github.io/blog/recall-local-first-ai-memory.html"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <img src="../images/thumbnail.png" alt="Logo" class="nav-logo-img" width="50" height="50">
+                    Soroush Taheri
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../about.html" class="nav-link">About</a>
+                <a href="../experience.html" class="nav-link">Experience</a>
+                <a href="../projects.html" class="nav-link">Projects</a>
+                <a href="../services.html" class="nav-link">Services</a>
+                <a href="../education.html" class="nav-link">Education</a>
+                <a href="../research.html" class="nav-link">Research</a>
+                <a href="index.html" class="nav-link">Blog</a>
+                <a href="../contact.html" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <article class="blog-article">
+        <div class="blog-article-container">
+            <a href="index.html" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+
+            <header class="blog-article-header">
+                <h1 class="blog-article-title">Building Recall: A Local-First Memory System for AI Assistants</h1>
+                <div class="blog-article-meta">
+                    <span><i class="far fa-calendar"></i> September 2026</span>
+                    <span><i class="far fa-user"></i> Soroush Taheri</span>
+                </div>
+            </header>
+
+            <div class="blog-article-body">
+                <p>
+                    Every conversation with an AI assistant starts from zero. Close the session, open a new one, and
+                    whatever you explained about your project, your preferences, or your ongoing work is gone. You end
+                    up re-explaining the same context over and over, which gets old fast if the assistant is part of
+                    your daily workflow. That's the problem <a href="https://github.com/soroush-thr/recall" target="_blank" rel="noopener">Recall</a>
+                    is built to solve.
+                </p>
+
+                <h2>The problem</h2>
+                <p>
+                    AI assistants are stateless by default. Whatever "memory" they appear to have is either crammed
+                    into the current conversation's context window, or stored by a third-party cloud service you have
+                    to trust with everything you tell it. Neither is great: the first doesn't survive a new session,
+                    and the second means your notes, preferences, and project details live on someone else's servers.
+                </p>
+                <p>
+                    Recall takes a different approach: a local-first, single-user personal memory system with a CLI
+                    and an <a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">MCP (Model Context Protocol)</a>
+                    server, so an assistant can store and recall persistent context across sessions without any of it
+                    leaving your machine.
+                </p>
+
+                <h2>How it's built</h2>
+                <p>
+                    The design is intentionally simple:
+                </p>
+                <ul>
+                    <li><strong>Local-first architecture</strong> — there's no cloud dependency for storing personal memory. Everything lives on disk, under your control.</li>
+                    <li><strong>A CLI</strong> for direct interaction — you can read, write, and manage stored memories yourself without going through an assistant at all.</li>
+                    <li><strong>An MCP server</strong> that exposes memory tools (like <code>remember</code> and <code>recall</code>) to any MCP-compatible AI assistant, so the assistant can write new memories and pull relevant ones back in automatically.</li>
+                    <li><strong>Single-user design</strong> — no multi-tenant complexity, no auth system to secure, no accounts. It's built to be private and simple, not a hosted product.</li>
+                </ul>
+                <p>
+                    It's written in Python, and the whole thing is a relatively small surface area on purpose: a CLI,
+                    an MCP server, and a local memory store connecting the two.
+                </p>
+
+                <h2>What it changes in practice</h2>
+                <p>
+                    With Recall wired into an assistant, the loop looks like this: preferences, facts, and project
+                    context you'd normally repeat every session get written to local memory once, and pulled back into
+                    future conversations automatically. The assistant remembers; you stop repeating yourself.
+                </p>
+                <p>
+                    Because the memory store is local, there's no dependency on a third-party service staying up, no
+                    data leaving your device, and no recurring cost. The tradeoff is exactly what you'd expect from a
+                    single-user, local-first tool: it's built for one person's machine, not a multi-user deployment.
+                </p>
+
+                <h2>Try it</h2>
+                <p>
+                    Recall is open source. The code, setup instructions, and CLI/MCP usage details are on
+                    <a href="https://github.com/soroush-thr/recall" target="_blank" rel="noopener">GitHub</a>. If you're
+                    building on MCP or just tired of re-explaining yourself to an assistant every morning, it's worth a
+                    look.
+                </p>
+            </div>
+
+            <footer class="blog-article-footer">
+                <a href="index.html" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+            </footer>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Soroush Taheri. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:soroush.thr@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/soroush-thr" target="_blank" rel="me noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/soroush-thr" target="_blank" rel="me noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?hl=en&user=hhoL598AAAAJ" target="_blank" rel="me noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://orcid.org/my-orcid?orcid=0000-0002-5885-3036" target="_blank" rel="me noopener" title="ORCID"><i class="fab fa-orcid"></i></a>
+                    <a href="https://www.webofscience.com/wos/author/record/GVU-0703-2022" target="_blank" rel="me noopener" title="Web of Science"><i class="fas fa-database"></i></a>
+                    <a href="https://www.researchgate.net/profile/Soroush_Taheri" target="_blank" rel="me noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -26,3 +26,5 @@ Soroush Taheri builds and ships production machine learning systems: LSTM-based 
 - [Education](https://soroush-thr.github.io/education.html): Degrees and professional certifications.
 - [Research](https://soroush-thr.github.io/research.html): Peer-reviewed publications with DOIs and abstracts.
 - [Contact](https://soroush-thr.github.io/contact.html): Contact form and direct contact details.
+- [Blog](https://soroush-thr.github.io/blog/): Notes on machine learning, data science, and the tools Soroush builds.
+  - [Building Recall: A Local-First Memory System for AI Assistants](https://soroush-thr.github.io/blog/recall-local-first-ai-memory.html): Why AI assistants lose context between sessions, and how Recall (a local-first CLI and MCP server) gives them persistent, private memory.
