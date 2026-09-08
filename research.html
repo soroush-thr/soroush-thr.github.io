@@ -3,26 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research & Publications - Soroush Taheri</title>
-    <meta name="description" content="Research publications by Soroush Taheri in machine learning, data science, and scientometrics.">
-    
+    <title>Research & Publications | Soroush Taheri</title>
+    <meta name="description" content="Peer-reviewed publications by Soroush Taheri on machine learning, scientometrics, and topic embedding, published in Scientometrics and IEEE venues.">
+    <meta name="author" content="Soroush Taheri">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://soroush-thr.github.io/research.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Research & Publications | Soroush Taheri">
+    <meta property="og:description" content="Peer-reviewed publications by Soroush Taheri on machine learning, scientometrics, and topic embedding, published in Scientometrics and IEEE venues.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://soroush-thr.github.io/research.html">
+    <meta property="og:image" content="https://soroush-thr.github.io/images/thumbnail.png">
+    <meta property="og:site_name" content="Soroush Taheri">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Research & Publications | Soroush Taheri">
+    <meta name="twitter:description" content="Peer-reviewed publications on machine learning, scientometrics, and topic embedding.">
+    <meta name="twitter:image" content="https://soroush-thr.github.io/images/thumbnail.png">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/thumbnail.png">
     <link rel="apple-touch-icon" href="images/thumbnail.png">
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
-    
+
     <!-- Theme initialization script (prevents flash) -->
     <script>
         (function() {
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', savedTheme);
         })();
+    </script>
+
+    <!-- Structured Data: Breadcrumb -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soroush-thr.github.io/"},
+            {"@type": "ListItem", "position": 2, "name": "Research", "item": "https://soroush-thr.github.io/research.html"}
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: Publications -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "ScholarlyArticle",
+                "position": 1,
+                "headline": "A Comprehensive Review of Machine Learning Approaches for Decarbonisation and Energy Efficiency in the UK Building Sector",
+                "author": [{"@type": "Person", "name": "Soroush Taheri"}, {"@type": "Person", "name": "E. Ahmadi"}, {"@type": "Person", "name": "A. Izadpanah"}],
+                "datePublished": "2025",
+                "isPartOf": {"@type": "PublicationEvent", "name": "CIBSE IBPSA-England Technical Symposium 2025"},
+                "url": "https://www.researchgate.net/publication/394963499_A_Comprehensive_Review_of_Machine_Learning_Approaches_for_Decarbonisation_Energy_Efficiency_and_Management_in_the_UK_Building_Sector"
+            },
+            {
+                "@type": "ScholarlyArticle",
+                "position": 2,
+                "headline": "An embedding approach for analyzing the evolution of research topics with a case study on computer science subdomains",
+                "author": [{"@type": "Person", "name": "S.R.T. Harikandeh"}, {"@type": "Person", "name": "S. Aliakbary"}, {"@type": "Person", "name": "Soroush Taheri"}],
+                "datePublished": "2023",
+                "isPartOf": {"@type": "Periodical", "name": "Scientometrics"},
+                "sameAs": "https://doi.org/10.1007/s11192-023-04642-4",
+                "url": "https://doi.org/10.1007/s11192-023-04642-4"
+            },
+            {
+                "@type": "ScholarlyArticle",
+                "position": 3,
+                "headline": "Research trend prediction in computer science publications: a deep neural network approach",
+                "author": [{"@type": "Person", "name": "Soroush Taheri"}, {"@type": "Person", "name": "S. Aliakbary"}],
+                "datePublished": "2022",
+                "isPartOf": {"@type": "Periodical", "name": "Scientometrics"},
+                "sameAs": "https://doi.org/10.1007/s11192-021-04240-2",
+                "url": "https://doi.org/10.1007/s11192-021-04240-2"
+            },
+            {
+                "@type": "ScholarlyArticle",
+                "position": 4,
+                "headline": "Towards Study of Research Topics Evolution in Artificial Intelligence based on Topic Embedding",
+                "author": [{"@type": "Person", "name": "S.R.T. Harikandeh"}, {"@type": "Person", "name": "S. Aliakbary"}, {"@type": "Person", "name": "Soroush Taheri"}],
+                "datePublished": "2021",
+                "sameAs": "https://doi.org/10.1109/ICCKE54056.2021.9721503",
+                "url": "https://doi.org/10.1109/ICCKE54056.2021.9721503"
+            }
+        ]
+    }
     </script>
 </head>
 <body>
@@ -59,7 +141,7 @@
     <!-- Publications Section -->
     <section id="publications" class="publications">
         <div class="container">
-            <h2 class="section-title">Publications</h2>
+            <h1 class="section-title">Publications</h1>
             <div class="publications-filter">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="journal">Journal Articles</button>
@@ -213,12 +295,12 @@
                 <p>&copy; 2025 Soroush Taheri. All rights reserved.</p>
                 <div class="footer-links">
                     <a href="mailto:soroush.thr@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.linkedin.com/in/soroush-thr" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/soroush-thr" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://scholar.google.com/citations?hl=en&user=hhoL598AAAAJ" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-                    <a href="https://orcid.org/my-orcid?orcid=0000-0002-5885-3036" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
-                    <a href="https://www.webofscience.com/wos/author/record/GVU-0703-2022" target="_blank" title="Web of Science"><i class="fas fa-database"></i></a>
-                    <a href="https://www.researchgate.net/profile/Soroush_Taheri" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                    <a href="https://www.linkedin.com/in/soroush-thr" target="_blank" rel="me noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/soroush-thr" target="_blank" rel="me noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?hl=en&user=hhoL598AAAAJ" target="_blank" rel="me noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://orcid.org/my-orcid?orcid=0000-0002-5885-3036" target="_blank" rel="me noopener" title="ORCID"><i class="fab fa-orcid"></i></a>
+                    <a href="https://www.webofscience.com/wos/author/record/GVU-0703-2022" target="_blank" rel="me noopener" title="Web of Science"><i class="fas fa-database"></i></a>
+                    <a href="https://www.researchgate.net/profile/Soroush_Taheri" target="_blank" rel="me noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
                 </div>
             </div>
         </div>
