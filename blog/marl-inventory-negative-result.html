@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When the Simple Rule Beats the Fancy Algorithm: A Multi-Agent RL Negative Result | Soroush Taheri</title>
+    <meta name="description" content="A research project on multi-agent reinforcement learning for inventory management, and why the honest result was that a well-tuned heuristic beat the learned policy.">
+    <meta name="author" content="Soroush Taheri">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://soroush-thr.github.io/blog/marl-inventory-negative-result.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="When the Simple Rule Beats the Fancy Algorithm: A Multi-Agent RL Negative Result">
+    <meta property="og:description" content="A research project on multi-agent reinforcement learning for inventory management, and why the honest result was that a well-tuned heuristic beat the learned policy.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://soroush-thr.github.io/blog/marl-inventory-negative-result.html">
+    <meta property="og:image" content="https://soroush-thr.github.io/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Soroush Taheri">
+    <meta property="article:published_time" content="2026-09-21">
+    <meta property="article:author" content="Soroush Taheri">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="When the Simple Rule Beats the Fancy Algorithm: A Multi-Agent RL Negative Result">
+    <meta name="twitter:description" content="Why a well-tuned heuristic beat a multi-agent reinforcement learning policy on a real inventory-management research problem.">
+    <meta name="twitter:image" content="https://soroush-thr.github.io/images/og-image.jpg">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Theme initialization script (prevents flash) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
+    <!-- Structured Data: Breadcrumb -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soroush-thr.github.io/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://soroush-thr.github.io/blog/"},
+            {"@type": "ListItem", "position": 3, "name": "A Multi-Agent RL Negative Result", "item": "https://soroush-thr.github.io/blog/marl-inventory-negative-result.html"}
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "When the Simple Rule Beats the Fancy Algorithm: A Multi-Agent RL Negative Result",
+        "description": "A research project on multi-agent reinforcement learning for inventory management, and why the honest result was that a well-tuned heuristic beat the learned policy.",
+        "url": "https://soroush-thr.github.io/blog/marl-inventory-negative-result.html",
+        "datePublished": "2026-09-21",
+        "dateModified": "2026-09-21",
+        "author": {"@type": "Person", "name": "Soroush Taheri", "url": "https://soroush-thr.github.io/"},
+        "publisher": {"@type": "Person", "name": "Soroush Taheri"},
+        "image": "https://soroush-thr.github.io/images/og-image.jpg",
+        "mainEntityOfPage": "https://soroush-thr.github.io/blog/marl-inventory-negative-result.html"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <img src="../images/thumbnail.png" alt="Logo" class="nav-logo-img" width="50" height="50">
+                    Soroush Taheri
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../about.html" class="nav-link">About</a>
+                <a href="../experience.html" class="nav-link">Experience</a>
+                <a href="../projects.html" class="nav-link">Projects</a>
+                <a href="../services.html" class="nav-link">Services</a>
+                <a href="../education.html" class="nav-link">Education</a>
+                <a href="../research.html" class="nav-link">Research</a>
+                <a href="index.html" class="nav-link">Blog</a>
+                <a href="../contact.html" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <article class="blog-article">
+        <div class="blog-article-container">
+            <a href="index.html" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+
+            <header class="blog-article-header">
+                <h1 class="blog-article-title">When the Simple Rule Beats the Fancy Algorithm: A Multi-Agent RL Negative Result</h1>
+                <div class="blog-article-meta">
+                    <span><i class="far fa-calendar"></i> September 2026</span>
+                    <span><i class="far fa-user"></i> Soroush Taheri</span>
+                </div>
+            </header>
+
+            <div class="blog-article-body">
+                <p>
+                    Most write-ups about reinforcement learning projects lead with a win. This one doesn't, and I think
+                    that's the more useful post: a research collaboration I worked on used multi-agent reinforcement
+                    learning (MARL) to try to lower costs in a decentralized inventory-management problem, and the
+                    final, statistically rigorous answer was that a well-tuned simple rule beat the learned policy
+                    outright. That's not a failure to hide — it's a real result, and the process of getting to it is
+                    worth more than a tidy success story would have been.
+                </p>
+
+                <h2>The problem</h2>
+                <p>
+                    The setup: several retail stores share a central warehouse and can also ship stock laterally to
+                    each other — "transshipment" — instead of only ordering from the warehouse. Each store acts as an
+                    independent agent, deciding how much to order, whether to request stock from another store, how
+                    much to request, and how much to hold in reserve. The research question was direct: does letting
+                    the stores learn a cooperative transshipment policy actually lower total system cost, compared to
+                    a tuned heuristic baseline and a no-sharing baseline?
+                </p>
+
+                <h2>What was built</h2>
+                <p>
+                    Getting to a trustworthy answer meant building a fairly long ladder of increasingly sophisticated
+                    approaches and baselines: a tabular Q-learning reference point, five iterations of DQN (each fixing
+                    a specific training instability), five iterations of IPPO (fixing entropy collapse, noisy reward
+                    signals, and invalid advantage estimation across irregular event-driven decisions), and three
+                    iterations of MAPPO with a centralized critic. Alongside the learned policies sat two carefully
+                    tuned heuristic baselines, used as the real comparison point rather than a token strawman.
+                </p>
+                <p>
+                    Just as important as the models was the evaluation infrastructure: a fixed, disjoint set of seeds
+                    for final evaluation versus checkpoint selection (to avoid seed leakage contaminating results), a
+                    frozen experimental protocol, and audit scripts that specifically checked for cost-reconciliation
+                    errors and RNG contamination before any number was reported as final.
+                </p>
+
+                <h2>Getting the diagnosis right, twice</h2>
+                <p>
+                    The most valuable part of this project wasn't the final number, it was how many times an
+                    apparently reasonable explanation for why the learned policies were underperforming turned out to
+                    be wrong on closer inspection. At one point, degenerate corner-case behavior in the learned
+                    policies looked like a coordination failure — evidence that the agents genuinely couldn't learn to
+                    cooperate. A deeper trace showed the real cause was noisy reward signals and an advantage-estimation
+                    bug from chaining GAE across irregular, event-driven decision points — an implementation problem,
+                    not evidence that cooperation was fundamentally too hard to learn. A separate seed-leakage bug,
+                    where checkpoint-selection and final-evaluation seeds overlapped, contaminated at least two earlier
+                    runs' headline numbers before a dedicated audit script caught it.
+                </p>
+                <p>
+                    Neither of those was a footnote — each one changed what the results actually meant, and both are
+                    documented alongside the final numbers rather than quietly discarded.
+                </p>
+
+                <h2>The result</h2>
+                <p>
+                    On the final benchmark (100 held-out scenarios, 10 training seeds), the tuned heuristic achieved
+                    the lowest cost, beating the best learned policy (MAPPO with full transshipment) by a statistically
+                    significant margin — the learned policy didn't win a single one of the 10 seeds. That's the
+                    headline, and it's a real negative result for MARL over a well-tuned rule in this setting.
+                </p>
+                <p>
+                    But it's not a story of "MARL didn't work at all." The learned policy with full transshipment beat
+                    the learned policy with no sharing by a similarly significant margin, in most seeds. Cooperation
+                    between agents genuinely helped, relative to not cooperating — it just wasn't enough to close the
+                    gap with a simple rule that had already been carefully tuned for this exact problem.
+                </p>
+
+                <h2>Why this is worth writing about</h2>
+                <p>
+                    It's easy to publish the version of a project where the sophisticated approach wins. It's more
+                    useful, and more honest, to publish the version where it doesn't — especially when the negative
+                    result survives real scrutiny: multiple algorithm families, a fair heuristic baseline, seed-leakage
+                    checks, and an explicit audit trail. A well-instrumented "no" is worth more than a shaky "yes."
+                </p>
+                <p>
+                    This project is part of an ongoing academic research collaboration, so the code and the specific
+                    scenario details aren't public — but the methodology and the result are exactly as described here.
+                </p>
+            </div>
+
+            <footer class="blog-article-footer">
+                <a href="index.html" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+            </footer>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Soroush Taheri. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:soroush.thr@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/soroush-thr" target="_blank" rel="me noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/soroush-thr" target="_blank" rel="me noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?hl=en&user=hhoL598AAAAJ" target="_blank" rel="me noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://orcid.org/my-orcid?orcid=0000-0002-5885-3036" target="_blank" rel="me noopener" title="ORCID"><i class="fab fa-orcid"></i></a>
+                    <a href="https://www.webofscience.com/wos/author/record/GVU-0703-2022" target="_blank" rel="me noopener" title="Web of Science"><i class="fas fa-database"></i></a>
+                    <a href="https://www.researchgate.net/profile/Soroush_Taheri" target="_blank" rel="me noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maestro: Cross-Examining Multiple AI Models So You Don't Have To | Soroush Taheri</title>
+    <meta name="description" content="Why trusting one AI's confident-sounding answer is risky, and how Maestro routes a question to multiple LLMs, then has a judge model synthesize a consensus and flag likely hallucinations.">
+    <meta name="author" content="Soroush Taheri">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://soroush-thr.github.io/blog/maestro-multi-llm-orchestrator.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Maestro: Cross-Examining Multiple AI Models So You Don't Have To">
+    <meta property="og:description" content="Why trusting one AI's confident-sounding answer is risky, and how Maestro routes a question to multiple LLMs, then has a judge model synthesize a consensus and flag likely hallucinations.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://soroush-thr.github.io/blog/maestro-multi-llm-orchestrator.html">
+    <meta property="og:image" content="https://soroush-thr.github.io/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Soroush Taheri">
+    <meta property="article:published_time" content="2026-09-21">
+    <meta property="article:author" content="Soroush Taheri">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Maestro: Cross-Examining Multiple AI Models So You Don't Have To">
+    <meta name="twitter:description" content="How Maestro routes a question to multiple LLMs and has a judge model flag claims only one model made as possible hallucinations.">
+    <meta name="twitter:image" content="https://soroush-thr.github.io/images/og-image.jpg">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Theme initialization script (prevents flash) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
+    <!-- Structured Data: Breadcrumb -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soroush-thr.github.io/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://soroush-thr.github.io/blog/"},
+            {"@type": "ListItem", "position": 3, "name": "Maestro: Cross-Examining Multiple AI Models", "item": "https://soroush-thr.github.io/blog/maestro-multi-llm-orchestrator.html"}
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Maestro: Cross-Examining Multiple AI Models So You Don't Have To",
+        "description": "Why trusting one AI's confident-sounding answer is risky, and how Maestro routes a question to multiple LLMs, then has a judge model synthesize a consensus and flag likely hallucinations.",
+        "url": "https://soroush-thr.github.io/blog/maestro-multi-llm-orchestrator.html",
+        "datePublished": "2026-09-21",
+        "dateModified": "2026-09-21",
+        "author": {"@type": "Person", "name": "Soroush Taheri", "url": "https://soroush-thr.github.io/"},
+        "publisher": {"@type": "Person", "name": "Soroush Taheri"},
+        "image": "https://soroush-thr.github.io/images/projects/maestro-thumbnail.png",
+        "mainEntityOfPage": "https://soroush-thr.github.io/blog/maestro-multi-llm-orchestrator.html"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <img src="../images/thumbnail.png" alt="Logo" class="nav-logo-img" width="50" height="50">
+                    Soroush Taheri
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../about.html" class="nav-link">About</a>
+                <a href="../experience.html" class="nav-link">Experience</a>
+                <a href="../projects.html" class="nav-link">Projects</a>
+                <a href="../services.html" class="nav-link">Services</a>
+                <a href="../education.html" class="nav-link">Education</a>
+                <a href="../research.html" class="nav-link">Research</a>
+                <a href="index.html" class="nav-link">Blog</a>
+                <a href="../contact.html" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <article class="blog-article">
+        <div class="blog-article-container">
+            <a href="index.html" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+
+            <header class="blog-article-header">
+                <h1 class="blog-article-title">Maestro: Cross-Examining Multiple AI Models So You Don't Have To</h1>
+                <div class="blog-article-meta">
+                    <span><i class="far fa-calendar"></i> September 2026</span>
+                    <span><i class="far fa-user"></i> Soroush Taheri</span>
+                </div>
+            </header>
+
+            <div class="blog-article-body">
+                <p>
+                    A confident-sounding answer from one AI model isn't the same thing as a correct one. The usual way
+                    to catch that gap is manual: paste the same question into ChatGPT, then Claude, then Gemini, and
+                    eyeball the differences yourself. It works, but it's tedious enough that most people just don't do
+                    it — and the questions where it matters most (higher stakes, more ambiguity) are exactly the ones
+                    people skip the check on. <a href="https://github.com/soroush-thr/Maestro-AI" target="_blank" rel="noopener">Maestro</a>
+                    automates that comparison instead of relying on you to remember to do it.
+                </p>
+
+                <h2>The problem</h2>
+                <p>
+                    Every model has blind spots, and they're not the same blind spots. Two models agreeing on a fact
+                    is a much stronger signal than one model stating it alone, but nothing in a typical chat interface
+                    surfaces that distinction — you get one answer, delivered with the same tone of confidence whether
+                    it's well-supported or a guess. Cross-checking against other models fixes this, but only if someone
+                    actually does it, every time, for every claim that matters.
+                </p>
+
+                <h2>How it's built</h2>
+                <p>
+                    Maestro is a single HTML file — no build step, no backend, no server to maintain — that talks
+                    directly to <a href="https://openrouter.ai/" target="_blank" rel="noopener">OpenRouter</a> from the
+                    browser, giving it access to 46+ models across 20 providers. It has four modes:
+                </p>
+                <ul>
+                    <li><strong>Auto</strong> — a cheap classifier model reads the question's complexity and stakes, then picks how many models to involve.</li>
+                    <li><strong>Solo</strong> — one model, for quick, low-stakes questions where cross-checking is overkill.</li>
+                    <li><strong>Duel</strong> — two models answer independently, useful for a fast sanity check.</li>
+                    <li><strong>Council</strong> — three to five models weigh in, for the questions where getting it wrong actually costs something.</li>
+                </ul>
+                <p>
+                    Whichever mode is used, the models that answer do so independently — they don't see each other's
+                    responses. A separate judge model then compares the independent answers, synthesizes a consensus
+                    response, and explicitly flags any claim that only one model made as a possible hallucination
+                    rather than quietly blending it in as fact.
+                </p>
+                <p>
+                    Everything — the API key, configuration, and history — is kept in the browser's <code>localStorage</code>.
+                    There's a live model-availability checker, a provider-tabbed model picker, and an analytics dashboard
+                    that tracks spend and savings versus always defaulting to the most expensive frontier model. The
+                    whole thing is deployed statically on GitHub Pages.
+                </p>
+
+                <h2>Why the architecture matters</h2>
+                <p>
+                    The zero-backend design isn't just a convenience — it means your API key and your questions go
+                    straight from your browser to OpenRouter and never pass through a server you don't control. It
+                    also means the routing logic (which models to use, when) is the only place where cost discipline
+                    lives: cheap questions stay cheap, and the expensive multi-model cross-checking only kicks in when
+                    the classifier decides the stakes justify it.
+                </p>
+
+                <h2>Try it</h2>
+                <p>
+                    Maestro is live at <a href="https://soroush-thr.github.io/Maestro-AI/" target="_blank" rel="noopener">soroush-thr.github.io/Maestro-AI</a>,
+                    and the code is on <a href="https://github.com/soroush-thr/Maestro-AI" target="_blank" rel="noopener">GitHub</a>.
+                    If you've ever caught yourself trusting an AI's answer a little too quickly, it's worth a look.
+                </p>
+            </div>
+
+            <footer class="blog-article-footer">
+                <a href="index.html" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+            </footer>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Soroush Taheri. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:soroush.thr@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/soroush-thr" target="_blank" rel="me noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/soroush-thr" target="_blank" rel="me noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?hl=en&user=hhoL598AAAAJ" target="_blank" rel="me noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://orcid.org/my-orcid?orcid=0000-0002-5885-3036" target="_blank" rel="me noopener" title="ORCID"><i class="fab fa-orcid"></i></a>
+                    <a href="https://www.webofscience.com/wos/author/record/GVU-0703-2022" target="_blank" rel="me noopener" title="Web of Science"><i class="fas fa-database"></i></a>
+                    <a href="https://www.researchgate.net/profile/Soroush_Taheri" target="_blank" rel="me noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html>

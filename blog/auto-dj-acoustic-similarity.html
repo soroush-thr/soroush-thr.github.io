@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-DJ: Building Playlists From What Songs Actually Sound Like | Soroush Taheri</title>
+    <meta name="description" content="Genre tags and manual curation only get playlists so far. Here's how Auto-DJ fingerprints songs by their acoustic features and builds playlists from actual sonic similarity.">
+    <meta name="author" content="Soroush Taheri">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://soroush-thr.github.io/blog/auto-dj-acoustic-similarity.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Auto-DJ: Building Playlists From What Songs Actually Sound Like">
+    <meta property="og:description" content="Genre tags and manual curation only get playlists so far. Here's how Auto-DJ fingerprints songs by their acoustic features and builds playlists from actual sonic similarity.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://soroush-thr.github.io/blog/auto-dj-acoustic-similarity.html">
+    <meta property="og:image" content="https://soroush-thr.github.io/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Soroush Taheri">
+    <meta property="article:published_time" content="2026-09-21">
+    <meta property="article:author" content="Soroush Taheri">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Auto-DJ: Building Playlists From What Songs Actually Sound Like">
+    <meta name="twitter:description" content="How Auto-DJ fingerprints songs by their acoustic features (MFCCs) and builds playlists from actual sonic similarity instead of genre tags.">
+    <meta name="twitter:image" content="https://soroush-thr.github.io/images/og-image.jpg">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Theme initialization script (prevents flash) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
+    <!-- Structured Data: Breadcrumb -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soroush-thr.github.io/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://soroush-thr.github.io/blog/"},
+            {"@type": "ListItem", "position": 3, "name": "Auto-DJ: Playlists From What Songs Sound Like", "item": "https://soroush-thr.github.io/blog/auto-dj-acoustic-similarity.html"}
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Auto-DJ: Building Playlists From What Songs Actually Sound Like",
+        "description": "Genre tags and manual curation only get playlists so far. Here's how Auto-DJ fingerprints songs by their acoustic features and builds playlists from actual sonic similarity.",
+        "url": "https://soroush-thr.github.io/blog/auto-dj-acoustic-similarity.html",
+        "datePublished": "2026-09-21",
+        "dateModified": "2026-09-21",
+        "author": {"@type": "Person", "name": "Soroush Taheri", "url": "https://soroush-thr.github.io/"},
+        "publisher": {"@type": "Person", "name": "Soroush Taheri"},
+        "image": "https://soroush-thr.github.io/images/projects/auto-dj-thumbnail.png",
+        "mainEntityOfPage": "https://soroush-thr.github.io/blog/auto-dj-acoustic-similarity.html"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <img src="../images/thumbnail.png" alt="Logo" class="nav-logo-img" width="50" height="50">
+                    Soroush Taheri
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../about.html" class="nav-link">About</a>
+                <a href="../experience.html" class="nav-link">Experience</a>
+                <a href="../projects.html" class="nav-link">Projects</a>
+                <a href="../services.html" class="nav-link">Services</a>
+                <a href="../education.html" class="nav-link">Education</a>
+                <a href="../research.html" class="nav-link">Research</a>
+                <a href="index.html" class="nav-link">Blog</a>
+                <a href="../contact.html" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <article class="blog-article">
+        <div class="blog-article-container">
+            <a href="index.html" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+
+            <header class="blog-article-header">
+                <h1 class="blog-article-title">Auto-DJ: Building Playlists From What Songs Actually Sound Like</h1>
+                <div class="blog-article-meta">
+                    <span><i class="far fa-calendar"></i> September 2026</span>
+                    <span><i class="far fa-user"></i> Soroush Taheri</span>
+                </div>
+            </header>
+
+            <div class="blog-article-body">
+                <p>
+                    Genre tags are a blunt instrument. Two songs tagged "rock" can sound nothing alike, and two songs
+                    from completely different genres can flow into each other perfectly. If you've ever manually
+                    built a playlist by ear, skipping between folders trying to find the next song that "feels right"
+                    after the current one, you've already done the job <a href="https://github.com/soroush-thr/Auto-DJ" target="_blank" rel="noopener">Auto-DJ</a>
+                    automates: finding songs that are acoustically similar, not just similarly labeled.
+                </p>
+
+                <h2>The problem</h2>
+                <p>
+                    Manual curation and tag-based discovery both have the same blind spot: they rely on metadata
+                    (genre, mood, era) as a stand-in for how a song actually sounds. That's a lossy proxy. What
+                    actually makes two songs flow well together is closer to their acoustic fingerprint — timbre,
+                    texture, the shape of the sound itself — which tags don't capture directly.
+                </p>
+
+                <h2>How it's built</h2>
+                <p>
+                    Auto-DJ works in three phases:
+                </p>
+                <ul>
+                    <li><strong>Feature extraction</strong> — for every song in a local library, <a href="https://librosa.org/" target="_blank" rel="noopener">librosa</a> extracts 13 <a href="https://en.wikipedia.org/wiki/Mel-frequency_cepstrum" target="_blank" rel="noopener">MFCCs</a> (Mel-frequency cepstral coefficients — a standard way of representing the timbre of audio) at a 22,050 Hz sample rate, averaged into a single fingerprint vector per song.</li>
+                    <li><strong>Library management</strong> — the library is scanned recursively, fingerprints are persisted to a local JSON database so they don't need to be recomputed on every run, and a similarity matrix between every pair of songs is built using Euclidean distance between fingerprints.</li>
+                    <li><strong>Playlist generation</strong> — an interactive CLI takes a seed song and a target length, then walks the similarity matrix to build a playlist of acoustically related tracks, exporting it as a standard M3U file any music player can open.</li>
+                </ul>
+                <p>
+                    Each phase has its own test suite, and the whole thing runs locally against your own music
+                    collection — no streaming service, no cloud model, no data leaving your machine.
+                </p>
+
+                <h2>Why MFCCs</h2>
+                <p>
+                    MFCCs were originally developed for speech recognition, but they turn out to be a solid general-
+                    purpose summary of a sound's timbral character — closer to "what does this actually sound like"
+                    than raw frequency data, and much more compact than the full waveform. Averaging 13 coefficients
+                    per song into one fingerprint vector is a deliberately simple representation, but it's enough to
+                    make Euclidean distance between songs a meaningful proxy for "these sound alike," which is exactly
+                    what a similarity-based playlist generator needs.
+                </p>
+
+                <h2>Try it</h2>
+                <p>
+                    The code is on <a href="https://github.com/soroush-thr/Auto-DJ" target="_blank" rel="noopener">GitHub</a>.
+                    Point it at your own music library and see what it pulls together from a seed song you like — it's
+                    a different kind of discovery than scrolling through genre playlists.
+                </p>
+            </div>
+
+            <footer class="blog-article-footer">
+                <a href="index.html" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+            </footer>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Soroush Taheri. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:soroush.thr@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/soroush-thr" target="_blank" rel="me noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/soroush-thr" target="_blank" rel="me noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?hl=en&user=hhoL598AAAAJ" target="_blank" rel="me noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://orcid.org/my-orcid?orcid=0000-0002-5885-3036" target="_blank" rel="me noopener" title="ORCID"><i class="fab fa-orcid"></i></a>
+                    <a href="https://www.webofscience.com/wos/author/record/GVU-0703-2022" target="_blank" rel="me noopener" title="Web of Science"><i class="fas fa-database"></i></a>
+                    <a href="https://www.researchgate.net/profile/Soroush_Taheri" target="_blank" rel="me noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html>
