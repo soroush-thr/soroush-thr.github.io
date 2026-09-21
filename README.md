@@ -262,7 +262,7 @@ The code in this repository (HTML/CSS/JS) is available under the [MIT License](L
 
 - ✅ **SEO & Structured Data Overhaul**: Fixed sitemap.xml, expanded robots.txt for AI crawlers, added canonical/OG/Twitter tags and JSON-LD (Person, BreadcrumbList, ScholarlyArticle, Service) to every page, added `llms.txt` and `404.html`
 - ✅ **Image Optimization**: Compressed all project thumbnails and the site logo (~60-70% smaller), resized the profile photo to its display size, generated a proper favicon set (16/32/180) and a dedicated 1200×630 social share image, and added lazy-loading to below-the-fold images
-- ✅ **Blog Section**: Added a `/blog/` section with its own listing page, five posts (Recall, Maestro, GeoGem, a MARL research write-up, and Auto-DJ), and `BlogPosting`/`Blog` JSON-LD
+- ✅ **Blog Section**: Added a `/blog/` section with its own listing page, nine posts (Recall, Maestro, GeoGem, a MARL research write-up, Auto-DJ, Spectrum, PastePal, FormatFusion, CSV2Dashboard), and `BlogPosting`/`Blog` JSON-LD
 - ✅ **Services Page**: Added a dedicated Services page listing consulting offerings and pricing
 - ✅ **Multi-Page Architecture**: Converted to dedicated pages for better organization and SEO
 - ✅ **Dark/Light Theme**: Implemented theme toggle with persistent user preference storage

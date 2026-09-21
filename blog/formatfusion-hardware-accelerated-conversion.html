@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormatFusion: Getting File Conversion Off the Web and Onto Your GPU | Soroush Taheri</title>
+    <meta name="description" content="Why ad-hoc online file converters are a bad default for images, audio, and video, and how FormatFusion uses bundled FFmpeg and hardware-accelerated encoding for 3-5x faster local conversion.">
+    <meta name="author" content="Soroush Taheri">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://soroush-thr.github.io/blog/formatfusion-hardware-accelerated-conversion.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="FormatFusion: Getting File Conversion Off the Web and Onto Your GPU">
+    <meta property="og:description" content="Why ad-hoc online file converters are a bad default for images, audio, and video, and how FormatFusion uses bundled FFmpeg and hardware-accelerated encoding for 3-5x faster local conversion.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://soroush-thr.github.io/blog/formatfusion-hardware-accelerated-conversion.html">
+    <meta property="og:image" content="https://soroush-thr.github.io/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Soroush Taheri">
+    <meta property="article:published_time" content="2025-09-20">
+    <meta property="article:author" content="Soroush Taheri">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FormatFusion: Getting File Conversion Off the Web and Onto Your GPU">
+    <meta name="twitter:description" content="How FormatFusion uses bundled FFmpeg and hardware-accelerated encoding to convert images, audio, and video locally, 3-5x faster than software encoding.">
+    <meta name="twitter:image" content="https://soroush-thr.github.io/images/og-image.jpg">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Theme initialization script (prevents flash) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
+    <!-- Structured Data: Breadcrumb -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soroush-thr.github.io/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://soroush-thr.github.io/blog/"},
+            {"@type": "ListItem", "position": 3, "name": "FormatFusion: Hardware-Accelerated Conversion", "item": "https://soroush-thr.github.io/blog/formatfusion-hardware-accelerated-conversion.html"}
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "FormatFusion: Getting File Conversion Off the Web and Onto Your GPU",
+        "description": "Why ad-hoc online file converters are a bad default for images, audio, and video, and how FormatFusion uses bundled FFmpeg and hardware-accelerated encoding for 3-5x faster local conversion.",
+        "url": "https://soroush-thr.github.io/blog/formatfusion-hardware-accelerated-conversion.html",
+        "datePublished": "2025-09-20",
+        "dateModified": "2025-09-20",
+        "author": {"@type": "Person", "name": "Soroush Taheri", "url": "https://soroush-thr.github.io/"},
+        "publisher": {"@type": "Person", "name": "Soroush Taheri"},
+        "image": "https://soroush-thr.github.io/images/projects/formatfusion-thumbnail.png",
+        "mainEntityOfPage": "https://soroush-thr.github.io/blog/formatfusion-hardware-accelerated-conversion.html"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <img src="../images/thumbnail.png" alt="Logo" class="nav-logo-img" width="50" height="50">
+                    Soroush Taheri
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../about.html" class="nav-link">About</a>
+                <a href="../experience.html" class="nav-link">Experience</a>
+                <a href="../projects.html" class="nav-link">Projects</a>
+                <a href="../services.html" class="nav-link">Services</a>
+                <a href="../education.html" class="nav-link">Education</a>
+                <a href="../research.html" class="nav-link">Research</a>
+                <a href="index.html" class="nav-link">Blog</a>
+                <a href="../contact.html" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <article class="blog-article">
+        <div class="blog-article-container">
+            <a href="index.html" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+
+            <header class="blog-article-header">
+                <h1 class="blog-article-title">FormatFusion: Getting File Conversion Off the Web and Onto Your GPU</h1>
+                <div class="blog-article-meta">
+                    <span><i class="far fa-calendar"></i> September 2025</span>
+                    <span><i class="far fa-user"></i> Soroush Taheri</span>
+                </div>
+            </header>
+
+            <div class="blog-article-body">
+                <p>
+                    Converting a video or an audio file often means uploading it to some website, waiting behind a
+                    queue of other people's files, and hoping the "free" tier doesn't clip your file size or quality.
+                    <a href="https://github.com/soroush-thr/FormatFusion" target="_blank" rel="noopener">FormatFusion</a>
+                    is a Windows desktop app built to make that whole detour unnecessary: images, audio, and video, all
+                    converted locally, faster than most upload times alone.
+                </p>
+
+                <h2>The problem</h2>
+                <p>
+                    Online converters solve the "I don't want to install anything" problem, but they trade away speed,
+                    privacy, and reliability to do it — your file leaves your machine, waits in someone else's queue,
+                    and comes back through the same upload/download round trip. A single desktop app that handles all
+                    three common media types (image, audio, video) removes the need for that trade entirely.
+                </p>
+
+                <h2>How it's built</h2>
+                <p>
+                    FormatFusion is a PyQt6 app with an MVVM architecture — models, views, and viewmodels kept
+                    separate from the conversion logic itself, which lives in a dedicated conversion service. Drag a
+                    file onto the dark-themed interface and it detects what to do:
+                </p>
+                <ul>
+                    <li><strong>Images</strong> — PNG/JPG/JPEG/BMP/TIFF/GIF/WebP in, PNG/JPG out, with resizing and KB-based size limiting via Pillow.</li>
+                    <li><strong>Audio</strong> — WAV/M4A/FLAC/OGG/MP3/AAC/WMA converted to MP3 at a chosen bitrate (128-320kbps) via a bundled FFmpeg binary.</li>
+                    <li><strong>Video</strong> — MKV/MOV/AVI/WebM/FLV/MP4/WMV/M4V converted to H.264/AAC MP4, with quality presets (480p/720p/1080p/original).</li>
+                </ul>
+                <p>
+                    The standout piece is video: FormatFusion auto-detects available NVIDIA, Intel, or AMD hardware
+                    encoders and uses them when present, cutting encoding time by 3-5x compared to software-only
+                    encoding — with an "ultrafast" preset as the default speed/quality tradeoff. The whole thing is
+                    packaged into a standalone Windows executable with PyInstaller, FFmpeg bundled in.
+                </p>
+
+                <h2>The unglamorous part that actually mattered</h2>
+                <p>
+                    Bundling a third-party binary like FFmpeg inside a packaged executable sounds simple until you
+                    actually have to make PyInstaller find it reliably across different machines and install
+                    locations. That discovery/bundling problem — making sure FFmpeg is found whether it's sitting in
+                    the project root, a <code>bin/</code> folder, alongside other resources, or on the system PATH —
+                    turned out to be the recurring source of friction in getting this from "works on my machine" to
+                    "works as a distributed .exe."
+                </p>
+
+                <h2>Try it</h2>
+                <p>
+                    The code is on <a href="https://github.com/soroush-thr/FormatFusion" target="_blank" rel="noopener">GitHub</a>.
+                    If your GPU is sitting idle while a browser tab uploads your video somewhere, this is the
+                    alternative.
+                </p>
+            </div>
+
+            <footer class="blog-article-footer">
+                <a href="index.html" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+            </footer>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Soroush Taheri. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:soroush.thr@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/soroush-thr" target="_blank" rel="me noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/soroush-thr" target="_blank" rel="me noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?hl=en&user=hhoL598AAAAJ" target="_blank" rel="me noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://orcid.org/my-orcid?orcid=0000-0002-5885-3036" target="_blank" rel="me noopener" title="ORCID"><i class="fab fa-orcid"></i></a>
+                    <a href="https://www.webofscience.com/wos/author/record/GVU-0703-2022" target="_blank" rel="me noopener" title="Web of Science"><i class="fas fa-database"></i></a>
+                    <a href="https://www.researchgate.net/profile/Soroush_Taheri" target="_blank" rel="me noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html>

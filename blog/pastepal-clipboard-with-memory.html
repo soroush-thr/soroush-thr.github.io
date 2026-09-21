@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PastePal: Giving Windows' Clipboard the Memory It Never Had | Soroush Taheri</title>
+    <meta name="description" content="Windows only remembers the last thing you copied. Here's how PastePal turns the clipboard into a searchable, pinnable history tool with a global hotkey, without slowing anything down.">
+    <meta name="author" content="Soroush Taheri">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://soroush-thr.github.io/blog/pastepal-clipboard-with-memory.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="PastePal: Giving Windows' Clipboard the Memory It Never Had">
+    <meta property="og:description" content="Windows only remembers the last thing you copied. Here's how PastePal turns the clipboard into a searchable, pinnable history tool with a global hotkey, without slowing anything down.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://soroush-thr.github.io/blog/pastepal-clipboard-with-memory.html">
+    <meta property="og:image" content="https://soroush-thr.github.io/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Soroush Taheri">
+    <meta property="article:published_time" content="2025-09-29">
+    <meta property="article:author" content="Soroush Taheri">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PastePal: Giving Windows' Clipboard the Memory It Never Had">
+    <meta name="twitter:description" content="How PastePal turns the Windows clipboard into a searchable, pinnable history tool backed by local SQLite, accessible via a global hotkey.">
+    <meta name="twitter:image" content="https://soroush-thr.github.io/images/og-image.jpg">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Theme initialization script (prevents flash) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+
+    <!-- Structured Data: Breadcrumb -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://soroush-thr.github.io/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://soroush-thr.github.io/blog/"},
+            {"@type": "ListItem", "position": 3, "name": "PastePal: Clipboard With Memory", "item": "https://soroush-thr.github.io/blog/pastepal-clipboard-with-memory.html"}
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: BlogPosting -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "PastePal: Giving Windows' Clipboard the Memory It Never Had",
+        "description": "Windows only remembers the last thing you copied. Here's how PastePal turns the clipboard into a searchable, pinnable history tool with a global hotkey, without slowing anything down.",
+        "url": "https://soroush-thr.github.io/blog/pastepal-clipboard-with-memory.html",
+        "datePublished": "2025-09-29",
+        "dateModified": "2025-09-29",
+        "author": {"@type": "Person", "name": "Soroush Taheri", "url": "https://soroush-thr.github.io/"},
+        "publisher": {"@type": "Person", "name": "Soroush Taheri"},
+        "image": "https://soroush-thr.github.io/images/projects/pastepal-thumbnail.png",
+        "mainEntityOfPage": "https://soroush-thr.github.io/blog/pastepal-clipboard-with-memory.html"
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <img src="../images/thumbnail.png" alt="Logo" class="nav-logo-img" width="50" height="50">
+                    Soroush Taheri
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../about.html" class="nav-link">About</a>
+                <a href="../experience.html" class="nav-link">Experience</a>
+                <a href="../projects.html" class="nav-link">Projects</a>
+                <a href="../services.html" class="nav-link">Services</a>
+                <a href="../education.html" class="nav-link">Education</a>
+                <a href="../research.html" class="nav-link">Research</a>
+                <a href="index.html" class="nav-link">Blog</a>
+                <a href="../contact.html" class="nav-link">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <article class="blog-article">
+        <div class="blog-article-container">
+            <a href="index.html" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+
+            <header class="blog-article-header">
+                <h1 class="blog-article-title">PastePal: Giving Windows' Clipboard the Memory It Never Had</h1>
+                <div class="blog-article-meta">
+                    <span><i class="far fa-calendar"></i> September 2025</span>
+                    <span><i class="far fa-user"></i> Soroush Taheri</span>
+                </div>
+            </header>
+
+            <div class="blog-article-body">
+                <p>
+                    Copy one thing, then copy a second thing before you've pasted the first, and the first one is
+                    just gone. The Windows clipboard has held exactly one item at a time for decades, which is a
+                    strange amount of memory loss for a tool people rely on dozens of times a day.
+                    <a href="https://github.com/soroush-thr/PastePal" target="_blank" rel="noopener">PastePal</a> fixes
+                    that with a small always-on history layer sitting on top of it.
+                </p>
+
+                <h2>The problem</h2>
+                <p>
+                    No persistence, no search, no organization — the native clipboard is a single slot, and anything
+                    you don't paste immediately is lost the moment you copy something else. That's a constant, minor
+                    source of workflow friction: re-copying something you already had, or losing a snippet because you
+                    copied one more thing in between.
+                </p>
+
+                <h2>How it's built</h2>
+                <p>
+                    PastePal is a PyQt6 app that lives in the system tray and monitors the clipboard continuously,
+                    persisting everything it captures — text, rich text, images, files, and folders — to a local
+                    SQLite database. A global hotkey (Alt+V by default) pops open a compact window near the middle-right
+                    of the screen with:
+                </p>
+                <ul>
+                    <li>Real-time, debounced search across clipboard history.</li>
+                    <li>Pin/unpin, so important items don't get pushed out by newer copies.</li>
+                    <li>Text-case transforms and multi-item merge, for quick reformatting without leaving the popup.</li>
+                    <li>Light and dark themes, and a settings panel.</li>
+                </ul>
+                <p>
+                    History is capped at 50 items with automatic cleanup of older entries, keeping lookups fast
+                    without the database growing unbounded. The app is packaged into a standalone Windows executable
+                    via PyInstaller.
+                </p>
+
+                <h2>Why the constraints were the interesting part</h2>
+                <p>
+                    A clipboard manager has an unusually strict non-functional requirement: it has to be invisible
+                    until you need it. It's watching the clipboard continuously in the background, so it has to stay
+                    lightweight, and the popup has to open instantly on the hotkey — any lag defeats the entire point
+                    of a tool meant to save you time. The 50-item cap and the debounced search aren't feature
+                    decisions so much as "keep this fast forever" decisions.
+                </p>
+
+                <h2>Try it</h2>
+                <p>
+                    The code is on <a href="https://github.com/soroush-thr/PastePal" target="_blank" rel="noopener">GitHub</a>.
+                    If you've ever lost something useful to a clipboard that only remembers one thing at a time, this
+                    is the fix.
+                </p>
+            </div>
+
+            <footer class="blog-article-footer">
+                <a href="index.html" class="blog-back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+            </footer>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Soroush Taheri. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:soroush.thr@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/soroush-thr" target="_blank" rel="me noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/soroush-thr" target="_blank" rel="me noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?hl=en&user=hhoL598AAAAJ" target="_blank" rel="me noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="https://orcid.org/my-orcid?orcid=0000-0002-5885-3036" target="_blank" rel="me noopener" title="ORCID"><i class="fab fa-orcid"></i></a>
+                    <a href="https://www.webofscience.com/wos/author/record/GVU-0703-2022" target="_blank" rel="me noopener" title="Web of Science"><i class="fas fa-database"></i></a>
+                    <a href="https://www.researchgate.net/profile/Soroush_Taheri" target="_blank" rel="me noopener" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+</body>
+</html>
